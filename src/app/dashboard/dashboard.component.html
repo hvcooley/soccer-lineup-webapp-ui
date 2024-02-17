@@ -1,0 +1,7 @@
+<h2>My Teams</h2>
+<div class="teams-menu">
+  <a *ngFor="let team of teams"
+      routerLink=team.id>
+      {{team.name}}
+  </a>
+</div>
