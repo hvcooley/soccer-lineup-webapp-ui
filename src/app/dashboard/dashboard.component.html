@@ -1,0 +1,8 @@
+<h2>My Top Teams</h2>
+<div class="teams-menu">
+  <a *ngFor="let team of teams" routerLink="{{ team.id }}">
+      {{team.name}}
+  </a>
+</div>
+
+<app-team-search></app-team-search>
