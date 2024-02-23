@@ -2,11 +2,11 @@
     <label for="search-box">Team Search</label>
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
   
-    <!-- <ul class="search-result">
+    <ul class="search-result">
       <li *ngFor="let team of teams$ | async" >
         <a routerLink="/{{team.id}}">
           {{team.name}}
         </a>
       </li>
-    </ul> -->
+    </ul>
   </div>

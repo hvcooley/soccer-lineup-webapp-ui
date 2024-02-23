@@ -18,8 +18,6 @@ export class TeamService {
     };
 
 
-
-
   getTeams(): Observable<Team[]> {
     const teams = of(TEAMS);
     return teams;
@@ -34,13 +32,18 @@ export class TeamService {
     if (!term.trim()) {
       return of([]);
     }
-    return new Observable<Team[]>;
-    // return this.http.get<Team[]>(`${this.teamsUrl}/?name=${term}`).pipe(
-    //   tap(x => x.length ?
-    //     //this.log(`found heroes matching "${term}"`) :
-    //     //this.log(`no heroes matching "${term}"`)),
-    //   catchError(this.handleError<Team[]>('searchHeroes', []))
-    // );
+    
+    return this.http.get<Team[]>(`${this.teamsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found heroes matching "${term}"`) :
+        this.log(`no heroes matching "${term}"`)),
+        catchError(this.handleError<Team[]>('searchHeroes', []))
+      );
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    console.info(`HeroService: ${message}`);
   }
 
   /**

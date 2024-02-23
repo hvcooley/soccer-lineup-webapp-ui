@@ -10,6 +10,7 @@ import { TeamService } from '../team.service';
 export class DashboardComponent implements OnInit {
   teams: Team[] = [];
 
+  //The service being pass makes the routing stop wokring
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {

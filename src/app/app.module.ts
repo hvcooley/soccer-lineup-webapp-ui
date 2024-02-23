@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgM
 import { AppRoutingModule } from './app-routing.module';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TeamSearchComponent } from './team-search/team-search.component';
     AppComponent,
     DashboardComponent,
     TeamsComponent,
-    TeamSearchComponent
+    TestComponent,
+    TeamSearchComponent,
   ],
   imports: [
     BrowserModule,
