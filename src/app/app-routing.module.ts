@@ -5,7 +5,7 @@ import { TeamsComponent } from './teams/teams.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'test', component: TestComponent }

@@ -1,1 +1,10 @@
-<p>team-detail works!</p>
+<div *ngIf="team">
+
+    <h2>{{team.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{team.id}}</div>
+    <div>
+      <label for="team-name">team name: </label>
+      <input id="team-name" [(ngModel)]="team.name" placeholder="name">
+    </div>
+  
+</div>

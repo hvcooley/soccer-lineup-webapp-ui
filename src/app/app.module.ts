@@ -7,19 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
 import { TestComponent } from './test/test.component';
+import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    TeamsComponent,
     TestComponent,
     TeamSearchComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    TeamsComponent,
+    TeamDetailComponent,
     AppRoutingModule
   ],
   providers: [],
