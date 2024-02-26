@@ -11,20 +11,19 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    TestComponent,
-    TeamSearchComponent,
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    TeamsComponent,
-    TeamDetailComponent,
     AppRoutingModule
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    TeamsComponent,
+    TestComponent,
+    TeamSearchComponent,
+    TeamDetailComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
