@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Team } from '../team';
@@ -10,8 +10,7 @@ import { TeamService } from '../team.service';
   styleUrl: './team-detail.component.css'
 })
 export class TeamDetailComponent implements OnInit{
-
-  team?: Team;
+  team: Team | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,4 +31,11 @@ export class TeamDetailComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
+  // save(): void {
+  //   if (this.team) {
+  //     this.teamService.updateTeam(this.team)
+  //       .subscribe(() => this.goBack());
+  //   }
+  // }
+
 }

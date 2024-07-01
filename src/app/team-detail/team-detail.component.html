@@ -3,8 +3,11 @@
     <h2>{{team.name | uppercase}} Details</h2>
     <div><span>id: </span>{{team.id}}</div>
     <div>
-      <label for="team-name">team name: </label>
-      <input id="team-name" [(ngModel)]="team.name" placeholder="name">
+      <label for="team-name">Team name: </label>
+      <input id="team-name" [(ngModel)]="team.name" placeholder="Team name">
     </div>
   
+    <button type="button" (click)="goBack()">go back</button>
+
+
 </div>

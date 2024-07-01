@@ -19,7 +19,7 @@ export class TeamsComponent implements OnInit{
 
   getTeams(): void {
     this.teamService.getTeams()
-      .subscribe(teams => this.teams = teams)
+    .subscribe(teams => this.teams = teams)
   }
 
 }

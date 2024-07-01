@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Team } from '../team';
 import { TeamService } from '../team.service';
-import {
-  NgFor
-} from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',

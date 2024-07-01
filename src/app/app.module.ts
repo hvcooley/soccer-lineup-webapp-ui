@@ -7,23 +7,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
 import { TestComponent } from './test/test.component';
+import { TestCopyComponent } from './test-copy/test.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
-  ],
   declarations: [
     AppComponent,
     DashboardComponent,
     TeamsComponent,
     TestComponent,
+    TestCopyComponent,
     TeamSearchComponent,
     TeamDetailComponent
   ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
