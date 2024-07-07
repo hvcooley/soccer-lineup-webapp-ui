@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component'; // <-- NgModel lives here
-import { AppRoutingModule } from './app-routing.module';
+import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamsComponent } from './teams/teams.component';
-import { TeamSearchComponent } from './team-search/team-search.component';
 import { TestComponent } from './test/test.component';
 import { TestCopyComponent } from './test-copy/test.component';
-import { TeamDetailComponent } from './team-detail/team-detail.component';
+
+
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    TeamsComponent,
-    TestComponent,
-    TestCopyComponent,
-    TeamSearchComponent,
-    TeamDetailComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    TeamsComponent,
+    TeamDetailComponent,
+    TestComponent,
+    TestCopyComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
