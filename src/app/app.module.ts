@@ -12,24 +12,18 @@ import { TestCopyComponent } from './test-copy/test.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    TeamsComponent,
-    TeamDetailComponent,
-    TestComponent,
-    TestCopyComponent
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        DashboardComponent,
+        TeamsComponent,
+        TeamDetailComponent,
+        TestComponent,
+        TestCopyComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        AppRoutingModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
