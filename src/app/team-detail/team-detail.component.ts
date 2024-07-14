@@ -31,11 +31,11 @@ export class TeamDetailComponent implements OnInit{
   goBack(): void {
     this.location.back();
   }
-  // save(): void {
-  //   if (this.team) {
-  //     this.teamService.updateTeam(this.team)
-  //       .subscribe(() => this.goBack());
-  //   }
-  // }
+  save(): void {
+    if (this.team) {
+      this.teamService.updateTeam(this.team)
+        .subscribe(() => this.goBack());
+    }
+  }
 
 }
