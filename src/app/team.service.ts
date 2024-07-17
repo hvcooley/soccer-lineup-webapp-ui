@@ -43,6 +43,24 @@ export class TeamService {
     );
   }
 
+  /** POST: add a new team to the server */
+  addTeam(team: Team): Observable<Team> {
+    return this.http.post<Team>(this.teamsUrl, team, this.httpOptions).pipe(
+      tap((newTeam: Team) => this.log(`added team w/ id=${newTeam.id}`)),
+      catchError(this.handleError<Team>('addTeam'))
+    );
+  }
+
+  /** DELETE: delete the hero from the server */
+  deleteTeam(id: number): Observable<Team> {
+    const url = `${this.teamsUrl}/${id}`;
+
+    return this.http.delete<Team>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted team id=${id}`)),
+      catchError(this.handleError<Team>('deleteTeam'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
