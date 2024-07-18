@@ -51,7 +51,7 @@ export class TeamService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE: delete the Team from the server */
   deleteTeam(id: number): Observable<Team> {
     const url = `${this.teamsUrl}/${id}`;
 
@@ -77,6 +77,20 @@ export class TeamService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  /* GET teams whose name contains search term */
+  searchTeams(term: string): Observable<Team[]> {
+    if (!term.trim()) {
+      // if not search term, return empty Team array.
+      return of([]);
+    }
+    return this.http.get<Team[]>(`${this.teamsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found teams matching "${term}"`) :
+        this.log(`no teams matching "${term}"`)),
+      catchError(this.handleError<Team[]>('searchTeams', []))
+    );
   }
 
   /** Log a Team message with the MessageService */

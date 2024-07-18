@@ -25,16 +25,16 @@ export class TeamSearchComponent {
     this.searchTerms.next(term);
   }
 
-  // ngOnInit(): void {
-  //   this.teams$ = this.searchTerms.pipe(
-  //     // wait 300ms after each keystroke before considering the term
-  //     debounceTime(300),
+  ngOnInit(): void {
+    this.teams$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
 
-  //     // ignore new term if same as previous term
-  //     distinctUntilChanged(),
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
 
-  //     // switch to new search observable each time the term changes
-  //     switchMap((term: string) => this.teamService.searchTeams(term)),
-  //   );
-  // }
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.teamService.searchTeams(term)),
+    );
+  }
 }

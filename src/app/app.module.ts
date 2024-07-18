@@ -9,6 +9,7 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TestComponent } from './test/test.component';
 import { TestCopyComponent } from './test-copy/test.component';
+import { TeamSearchComponent } from './team-search/team-search.component';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { InMemoryDataService } from './in-memory-data.service';
         DashboardComponent,
         TeamsComponent,
         TeamDetailComponent,
+        TeamSearchComponent,
         TestComponent,
         TestCopyComponent
     ],
