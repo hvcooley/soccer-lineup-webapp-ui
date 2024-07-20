@@ -6,6 +6,15 @@
       <label for="team-name">Team name: </label>
       <input id="team-name" [(ngModel)]="team.name" placeholder="Team name">
     </div>
+
+    <h3>Players:</h3>
+    <ul class = "team-players">
+      <li *ngFor="let player of team.players">
+        <a routerLink="/detail/{{player.id}}">
+          <span class="badge">{{player.id}}</span> {{player.firstName}} {{player.lastName}}
+        </a>
+      </li>
+  </ul>
   
     <button type="button" (click)="save()">save</button>
 

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { Team } from './team';
-import { TEAMS } from './mock-teams';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
