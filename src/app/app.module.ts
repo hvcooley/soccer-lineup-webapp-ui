@@ -18,6 +18,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { PlayerDetailComponent } from './player-detail/player-detail.component';
 
 
 @NgModule({ declarations: [
@@ -26,6 +27,7 @@ import { InMemoryDataService } from './in-memory-data.service';
         TeamsComponent,
         TeamDetailComponent,
         TeamSearchComponent,
+        PlayerDetailComponent,
         TestComponent,
         TestCopyComponent
     ],
