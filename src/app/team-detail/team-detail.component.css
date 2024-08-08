@@ -66,7 +66,8 @@ label {
     top: -4px;
     height: 1.8em;
     min-width: 16px;
-    text-align: right;
+    width: 5.0em;
+    text-align: center;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }

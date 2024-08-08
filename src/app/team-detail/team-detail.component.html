@@ -11,7 +11,7 @@
     <ul class = "team-players">
       <li *ngFor="let player of team.players">
         <a routerLink="/detail/{{player.id}}">
-          <span class="badge">{{player.id}}</span> {{player.firstName}} {{player.lastName}}
+          <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
         </a>
       </li>
   </ul>
