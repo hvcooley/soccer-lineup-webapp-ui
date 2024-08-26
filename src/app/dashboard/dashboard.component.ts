@@ -9,6 +9,7 @@ import { TeamService } from '../team.service';
 })
 export class DashboardComponent implements OnInit{
   teams: Team[] = [];
+  favoriteTeams: Team[] = [];
 
   //The service being pass makes the routing stop wokring
   constructor(private teamService: TeamService) { }
@@ -19,6 +20,9 @@ export class DashboardComponent implements OnInit{
 
   getTeams(): void {
     this.teamService.getTeams()
-      .subscribe(teams => this.teams = teams.slice(1, 5));
+      .subscribe(teams => this.teams = teams);
+
+    this.favoriteTeams = this.teams.filter(team => team.isFavorite);
+    
   }
 }

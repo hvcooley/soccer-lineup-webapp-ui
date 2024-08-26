@@ -4,4 +4,5 @@ export interface Team {
     id: number;
     name: string;
     players: Player[];
+    isFavorite: boolean;
   }

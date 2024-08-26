@@ -5,7 +5,7 @@ h2 {
 }
 
 
-.teams-menu {
+.favorite-teams {
   padding: 0;
   margin: auto;
   max-width: 1000px;
@@ -23,7 +23,7 @@ h2 {
   align-items: flex-start;
 }
 
-a {
+.favorite-teams a {
   background-color: #3f525c;
   border-radius: 2px;
   padding: 1rem;
@@ -50,6 +50,61 @@ a {
   }
 }
 
-a:hover {
+.favorite-teams a:hover {
   background-color: black;
+}
+
+.teams {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+.teams li {
+  position: relative;
+  cursor: pointer;
+}
+
+.teams li:hover {
+  left: .1em;
+}
+
+.teams b {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  display: block;
+  width: 20.6em;
+}
+
+.teams b:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+}
+
+.teams b:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.teams .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
 }

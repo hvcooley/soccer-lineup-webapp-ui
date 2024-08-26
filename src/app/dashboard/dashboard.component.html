@@ -1,9 +1,17 @@
 <h2>Top teams</h2>
-<div class="teams-menu">
-  <a *ngFor="let team of teams"
+<div class="favorite-teams">
+  <a *ngFor="let team of favoriteTeams"
     routerLink="/detail/{{team.id}}">
     {{team.name}}
   </a>
 </div>
 
 <app-team-search></app-team-search>
+
+<ul class="teams">
+  <li *ngFor="let team of teams">
+    <b routerLink="/detail/{{team.id}}">
+      <span class="badge">{{team.id}}</span> {{team.name}}
+    </b>
+  </li>
+</ul>

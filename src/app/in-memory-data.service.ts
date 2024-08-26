@@ -14,13 +14,14 @@ export class InMemoryDataService implements InMemoryDbService {
         {id: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: '11', jerseyNum: 2, position: 'LB'},
         {id: 3, firstName: 'Andrew', lastName: 'Carolan', teamId: '11', jerseyNum: 26, position: 'CB'},
         {id: 4, firstName: 'Leo', lastName: 'Cooley', teamId: '11', jerseyNum: 39, position: 'CDM'},
-      ]},
-      { id: 12, name: 'Georgetown Club Soccer 2021/22' },
-      { id: 13, name: 'PDA Jinky 99/00' },
-      { id: 14, name: 'Torpedoes 00s' },
-      { id: 15, name: 'Napoli Fantasy Team' },
-      { id: 16, name: 'Delbarton Varsity Soccer 2015/16' },
-      { id: 17, name: 'Delbarton Freshman Soccer 2013/14' }
+      ], isFavorite: true
+      },
+      { id: 12, name: 'Georgetown Club Soccer 2021/22', isFavorite: false},
+      { id: 13, name: 'PDA Jinky 99/00', isFavorite: false},
+      { id: 14, name: 'Torpedoes 00s', isFavorite: false},
+      { id: 15, name: 'Napoli Fantasy Team', isFavorite: false},
+      { id: 16, name: 'Delbarton Varsity Soccer 2015/16', isFavorite: false},
+      { id: 17, name: 'Delbarton Freshman Soccer 2013/14', isFavorite: false}
     ];
 
   const players = [
