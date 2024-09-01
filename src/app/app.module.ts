@@ -10,6 +10,7 @@ import { TeamsComponent } from './teams/teams.component';
 import { TestComponent } from './test/test.component';
 import { TestCopyComponent } from './test-copy/test.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
+import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,11 +40,17 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
         // and returns simulated server responses.
         // Remove it when a real server is ready to receive requests.
         HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, { dataEncapsulation: false }
-    )], 
+            InMemoryDataService, { dataEncapsulation: false }),
+        LoggerModule.forRoot({
+            serverLoggingUrl: 'http://localhost:68552/', // Replace with YOUR API
+            level: NgxLoggerLevel.TRACE,
+            serverLogLevel: NgxLoggerLevel.ERROR,
+            disableConsoleLogging: false
+          })
+    ], 
     providers: [provideHttpClient(withInterceptorsFromDi()),
         importProvidersFrom([
             HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
-          ])
-    ] })
+          ]), 
+          NGXLogger] })
 export class AppModule { }
