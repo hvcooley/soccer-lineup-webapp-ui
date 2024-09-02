@@ -5,7 +5,6 @@ export interface Game {
     myTeamId: number; //This is the foreign key tying the game to the team
     date: Date,
     actualStartTime: Date,
-    myTeam: Team,
     opponentTeam: Team,
     isHome: boolean,
     myTeamGoals: number,

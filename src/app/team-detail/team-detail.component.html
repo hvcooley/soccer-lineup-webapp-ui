@@ -1,25 +1,15 @@
-<div *ngIf="team" class="container">
-
-  <div class="team-players-container">
-    <h2>{{team.name | uppercase}} Details</h2>
+<div *ngIf="team" class="header">
+  <h2>{{team.name | uppercase}} Details</h2>
     <div><span>id: </span>{{team.id}}</div>
     <div>
       <label for="team-name">Team name: </label>
       <input id="team-name" [(ngModel)]="team.name" placeholder="Team name">
     </div>
-
-    <h3>Players:</h3>
-    <ul class="team-players">
-      <li *ngFor="let player of team.players">
-        <a routerLink="/detail/{{player.id}}">
-          <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
-        </a>
-      </li>
-    </ul>
-  
     <button type="button" (click)="save()">save</button>
     <button type="button" (click)="goBack()">go back</button>
-  </div>
+</div>
+
+<div *ngIf="team" class="container">
 
   <div class="team-upcoming-games-container">
     <h3>Upcoming Games:</h3>
@@ -27,6 +17,28 @@
       <li *ngFor="let gameLabel of team.gameLabelList">
         <a routerLink="/detail/{{gameLabel.id}}">
           <span class="badge">{{gameLabel.date}}</span> {{team.name}} vs. {{gameLabel.opponentTeamName}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="team-results-container">
+    <h3>Results:</h3>
+    <ul class="team-results">
+      <li *ngFor="let resultLabel of team.resultsList">
+        <a routerLink="/detail/{{resultLabel.id}}">
+          <span class="badge">{{resultLabel.date}}</span> {{team.name}} {{resultLabel.opponentTeamName}} {{resultLabel.myTeamGoals}} - {{resultLabel.opponentTeamGoals}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="team-players-container">
+    <h3>Players:</h3>
+    <ul class="team-players">
+      <li *ngFor="let player of team.players">
+        <a routerLink="/detail/{{player.id}}">
+          <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
         </a>
       </li>
     </ul>

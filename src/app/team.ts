@@ -8,4 +8,5 @@ export interface Team {
     isFavorite: boolean;
     isMyTeam: boolean;
     gameLabelList: GameLabel[]
+    resultsList: GameLabel[]
   }
