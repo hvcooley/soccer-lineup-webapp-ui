@@ -1,3 +1,4 @@
+import { GameLabel } from "./gameLabel";
 import { Player } from "./player";
 
 export interface Team {
@@ -5,4 +6,6 @@ export interface Team {
     name: string;
     players: Player[];
     isFavorite: boolean;
+    isMyTeam: boolean;
+    gameLabelList: GameLabel[]
   }
