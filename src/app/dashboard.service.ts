@@ -14,7 +14,7 @@ export class DashboardService {
   
   constructor(private http: HttpClient, private logger: NGXLogger, private commonService: CommonService) { }
 
-  private dashboardUrl = 'api/teams';  // URL to web api
+  private dashboardUrl = 'api/dashboard';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -12,6 +12,19 @@ Test data file to manually create mock DB data.
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
+
+    const dashboard = {
+      teamLabels: [
+        { id: 11, name: 'Delbarton Varsity Soccer 16/17', isFavorite: true,},
+        { id: 12, name: 'Georgetown Club Soccer 2021/22', isFavorite: false},
+        { id: 13, name: 'PDA Jinky 99/00', isFavorite: false},
+        { id: 14, name: 'Torpedoes 00s', isFavorite: false},
+        { id: 15, name: 'Napoli Fantasy Team', isFavorite: false},
+        { id: 16, name: 'Delbarton Varsity Soccer 2015/16', isFavorite: false},
+        { id: 17, name: 'Delbarton Freshman Soccer 2013/14', isFavorite: false}
+      ]
+    }
+
     const teams = [
       { id: 11, name: 'Delbarton Varsity Soccer 16/17', players: [
         {id: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: '11', jerseyNum: 10, position: 'CF'},
@@ -59,7 +72,7 @@ export class InMemoryDataService implements InMemoryDbService {
     }
   ]
 
-    return {teams, players, games};
+    return {dashboard, teams, players, games};
   }
 
   // Overrides the genId method to ensure that a team always has an id.

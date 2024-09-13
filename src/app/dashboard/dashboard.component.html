@@ -1,17 +1,17 @@
 <h2>Top teams</h2>
 <div class="favorite-teams">
-  <a *ngFor="let team of favoriteTeams"
-    routerLink="/detail/{{team.id}}">
-    {{team.name}}
+  <a *ngFor="let teamLabel of favoriteTeams"
+    routerLink="/detail/{{teamLabel.id}}">
+    {{teamLabel.name}}
   </a>
 </div>
 
 <app-team-search></app-team-search>
 
 <ul class="teams">
-  <li *ngFor="let team of teams">
-    <b routerLink="/detail/{{team.id}}">
-      <span class="badge">{{team.id}}</span> {{team.name}}
+  <li *ngFor="let teamLabel of dashboard?.teamLabels">
+    <b routerLink="/detail/{{teamLabel.id}}">
+      <span class="badge">{{teamLabel.id}}</span> {{teamLabel.name}}
     </b>
   </li>
 </ul>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Team } from '../team';
 import { TeamService } from '../team.service';
 import { NGXLogger } from 'ngx-logger';
+import { Dashboard } from '../dashboard';
+import { DashboardService } from '../dashboard.service';
+import { TeamLabel } from '../teamLabel';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,35 +12,33 @@ import { NGXLogger } from 'ngx-logger';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit{
-  teams: Team[] = [];
-  favoriteTeams: Team[] = [];
+  dashboard: Dashboard | undefined;
+  favoriteTeams: TeamLabel[] = [];
 
-  constructor(private teamService: TeamService, private logger: NGXLogger) { }
+  constructor(
+    private teamService: TeamService, 
+    private dashboardService: DashboardService, 
+    private logger: NGXLogger
+  ) { }
 
   ngOnInit(): void {
-    this.getTeams();
+    this.getDashboardData();
+    this.logger.info('Dashboard data fetched:', this.dashboard)
+
   }
 
-  getTeams(): void {
-    this.teamService.getTeams()
-      .subscribe({
-        next: teams => {
-          this.teams = teams;
-  
-          // Populate favoriteTeams based on the teams array
-          this.favoriteTeams = teams.filter(team => team.isFavorite);
-  
-          // Log the data after it's been fetched and processed
-          this.logger.info("The favorite teams list is: ", this.favoriteTeams);
-          this.logger.info("The favorite team names are: ", this.favoriteTeams.map(team => team.name));
-  
-          this.logger.info("The teams list is: ", this.teams);
-          this.logger.info("The team names are: ", this.teams.map(team => team.name));
-          
-        },
-        error: (e) => this.logger.error(e),
-        complete: () => this.logger.info("Completed loading data from teamService")
-      }
-      );
+  getDashboardData(): void {
+    this.dashboardService.getDashboard()
+      .subscribe(dashboard => {
+        this.dashboard = dashboard;
+
+        // Filter the teamLabels for favorite teams
+        // if (dashboard && dashboard.teamLabels) {
+        //   this.favoriteTeams = dashboard.teamLabels.filter(teamLabel => teamLabel.isFavorite);
+        // }
+
+        // this.logger.info('Favorite teams:', this.favoriteTeams); // Optional: Logging for debugging
+      });
   }
+
 }

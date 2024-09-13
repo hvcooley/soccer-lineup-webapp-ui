@@ -7,6 +7,6 @@ export interface Team {
     players: Player[];
     isFavorite: boolean;
     isMyTeam: boolean;
-    gameLabelList: GameLabel[]
-    resultsList: GameLabel[]
+    gameLabelList: GameLabel[];
+    resultsList: GameLabel[];
   }
