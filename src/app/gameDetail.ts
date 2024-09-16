@@ -9,7 +9,5 @@ export interface GameDetail {
     isHome: boolean,
     myTeamGoals: number,
     opponentTeamGoals: number,
-    isComplete: Boolean,
-
-
+    isComplete: Boolean
   }
