@@ -72,7 +72,28 @@ export class InMemoryDataService implements InMemoryDbService {
     }
   ]
 
-    return {dashboard, teams, players, games};
+  const gameDetails = [
+    {gameId: 1, date: '2017-09-14', actualStartTime: '2017-09-14, 11:49:36 AM', 
+      myTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeaM: false, 
+        players: [
+          {id: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: 11, jerseyNum: 10, position: 'CF'},
+          {id: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 2, position: 'LB'},
+          {id: 3, firstName: 'Andrew', lastName: 'Carolan', teamId: 11, jerseyNum: 26, position: 'CB'},
+          {id: 4, firstName: 'Leo', lastName: 'Cooley', teamId: 11, jerseyNum: 39, position: 'CDM'}]
+      }, 
+      opponentTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeaM: false, 
+        players: [
+          {id: 101, firstName: 'Jack', lastName: 'Smith', teamId: '18', jerseyNum: 10, position: 'RB'},
+          {id: 102, firstName: 'John', lastName: 'Doe', teamId: '18', jerseyNum: 2, position: 'LB'},
+          {id: 103, firstName: 'James', lastName: 'John', teamId: '18', jerseyNum: 26, position: 'CB'},
+          {id: 104, firstName: 'Borris', lastName: 'Smith', teamId: '18', jerseyNum: 39, position: 'CB'}
+        ]
+      }, 
+      isHome: true, myTeamGoals: 3, opponentTeamGoals: 0, isComplete: false
+    }
+  ]
+
+    return {dashboard, teams, players, games, gameDetails};
   }
 
   // Overrides the genId method to ensure that a team always has an id.
