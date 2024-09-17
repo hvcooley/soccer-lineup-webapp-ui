@@ -15,7 +15,7 @@
     <h3>Upcoming Games:</h3>
     <ul class="team-upcoming-games">
       <li *ngFor="let gameLabel of team.gameLabelList">
-        <a routerLink="/detail/{{gameLabel.id}}">
+        <a routerLink="/gameDetails/{{gameLabel.id}}">
           <span class="badge">{{gameLabel.date}}</span> {{team.name}} vs. {{gameLabel.opponentTeamName}}
         </a>
       </li>
@@ -26,7 +26,7 @@
     <h3>Results:</h3>
     <ul class="team-results">
       <li *ngFor="let resultLabel of team.resultsList">
-        <a routerLink="/detail/{{resultLabel.id}}">
+        <a routerLink="/gameDetails/{{resultLabel.id}}">
           <span class="badge">{{resultLabel.date}}</span> {{team.name}} {{resultLabel.opponentTeamName}} {{resultLabel.myTeamGoals}} - {{resultLabel.opponentTeamGoals}}
         </a>
       </li>

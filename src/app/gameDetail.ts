@@ -1,7 +1,7 @@
 import { Team } from "./team";
 
 export interface GameDetail {
-    gameId: number;
+    id: number;
     date: Date,
     actualStartTime: Date,
     myTeam: Team,

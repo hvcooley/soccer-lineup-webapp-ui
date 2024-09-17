@@ -13,7 +13,7 @@ export class GameDetailService {
 
   constructor(private http: HttpClient, private logger: NGXLogger, private commonService: CommonService) { }
 
-  private gameDetailUrl = 'api/gameDetail';  // URL to web api
+  private gameDetailUrl = 'api/gameDetails';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
