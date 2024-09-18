@@ -1,5 +1,31 @@
 <div *ngIf="gameDetail" class="header">
-    <h2>{{gameDetail.id}}</h2>
+    <h2>{{gameDetail.myTeam.name}} vs {{gameDetail.opponentTeam.name}} {{gameDetail.date}}</h2>
     
     <!-- <h2>{{gameDetail?.myTeam?.name}} vs {{gameDetail?.opponentTeam?.name}}</h2> -->
+
+    
+    <div *ngIf="gameDetail" class="container">
+      
+        <div class="players-stats-container">
+            <h3>{{gameDetail.myTeam.name}} Players Stats:</h3>
+            <ul class="my-team-players team-players">
+              <li *ngFor="let player of gameDetail.myTeam.players">
+                <a routerLink="/detail/{{player.id}}">
+                  <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+                </a>
+              </li>
+            </ul>
+            
+            <h3>{{gameDetail.opponentTeam.name}} Players Stats:</h3>
+            <ul class="opponent-team-players team-players">
+              <li *ngFor="let player of gameDetail.opponentTeam.players">
+                <a routerLink="/detail/{{player.id}}">
+                  <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+                </a>
+              </li>
+            </ul>
+
+        </div>
+            
+    </div>
 </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Team } from './team';
 import { Player } from './player';
+import { GameDetail } from './gameDetail';
 
 
 /*
@@ -45,12 +46,12 @@ export class InMemoryDataService implements InMemoryDbService {
           {id: 8, date: '2017-08-23', opponentTeamName: 'Chaminade', isHome: true, myTeamGoals: 3, opponentTeamGoals: 0}
         ]
       },
-      { id: 12, name: 'Georgetown Club Soccer 2021/22', isFavorite: false, isMyTeaM: true},
-      { id: 13, name: 'PDA Jinky 99/00', isFavorite: false, isMyTeaM: true},
-      { id: 14, name: 'Torpedoes 00s', isFavorite: false, isMyTeaM: true},
-      { id: 15, name: 'Napoli Fantasy Team', isFavorite: false, isMyTeaM: true},
-      { id: 16, name: 'Delbarton Varsity Soccer 2015/16', isFavorite: false, isMyTeaM: true},
-      { id: 17, name: 'Delbarton Freshman Soccer 2013/14', isFavorite: false, isMyTeaM: true}
+      { id: 12, name: 'Georgetown Club Soccer 2021/22', isFavorite: false, isMyTeam: true},
+      { id: 13, name: 'PDA Jinky 99/00', isFavorite: false, isMyTeam: true},
+      { id: 14, name: 'Torpedoes 00s', isFavorite: false, isMyTeam: true},
+      { id: 15, name: 'Napoli Fantasy Team', isFavorite: false, isMyTeam: true},
+      { id: 16, name: 'Delbarton Varsity Soccer 2015/16', isFavorite: false, isMyTeam: true},
+      { id: 17, name: 'Delbarton Freshman Soccer 2013/14', isFavorite: false, isMyTeam: true}
     ];
 
   const players = [
@@ -73,8 +74,8 @@ export class InMemoryDataService implements InMemoryDbService {
   ]
 
   const gameDetails = [
-    {gameId: 1, date: '2017-09-14', actualStartTime: '2017-09-14, 11:49:36 AM', 
-      myTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeaM: false, 
+    {id: 1, date: '2017-09-14', actualStartTime: '2017-09-14, 11:49:36 AM', 
+      myTeam: {id: 18, name: 'Delbarton Varsity Soccer 16/17', isFavorite: false, isMyTeaM: true, 
         players: [
           {id: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: 11, jerseyNum: 10, position: 'CF'},
           {id: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 2, position: 'LB'},
@@ -108,5 +109,9 @@ export class InMemoryDataService implements InMemoryDbService {
 
   genPlayersId(players: Player[]): number {
     return players.length > 0 ? Math.max(...players.map(player => player.id)) + 1 : 1;
+  }
+
+  genGameDetailsId(gameDetails: GameDetail[]): number {
+    return gameDetails.length > 0 ? Math.max(...gameDetails.map(gameDetails => gameDetails.id)) + 1 : 1;
   }
 }

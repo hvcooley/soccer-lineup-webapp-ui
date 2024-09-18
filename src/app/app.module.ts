@@ -20,6 +20,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 
 @NgModule({ declarations: [
@@ -30,7 +31,8 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
         TeamSearchComponent,
         PlayerDetailComponent,
         TestComponent,
-        TestCopyComponent
+        TestCopyComponent,
+        GameDetailComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
