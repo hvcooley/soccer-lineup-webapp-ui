@@ -14,33 +14,33 @@
   <div class="team-upcoming-games-container">
     <h3>Upcoming Games:</h3>
     <ul class="team-upcoming-games">
-      <li *ngFor="let gameLabel of team.gameLabelList">
+      <div *ngFor="let gameLabel of team.gameLabelList">
         <a routerLink="/gameDetails/{{gameLabel.id}}">
           <span class="badge">{{gameLabel.date}}</span> {{team.name}} vs. {{gameLabel.opponentTeamName}}
         </a>
-      </li>
+      </div>
     </ul>
   </div>
 
   <div class="team-results-container">
     <h3>Results:</h3>
     <ul class="team-results">
-      <li *ngFor="let resultLabel of team.resultsList">
+      <div *ngFor="let resultLabel of team.resultsList">
         <a routerLink="/gameDetails/{{resultLabel.id}}">
           <span class="badge">{{resultLabel.date}}</span> {{team.name}} {{resultLabel.opponentTeamName}} {{resultLabel.myTeamGoals}} - {{resultLabel.opponentTeamGoals}}
         </a>
-      </li>
+      </div>
     </ul>
   </div>
 
   <div class="team-players-container">
     <h3>Players:</h3>
     <ul class="team-players">
-      <li *ngFor="let player of team.players">
+      <div *ngFor="let player of team.players">
         <a routerLink="/detail/{{player.id}}">
           <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
         </a>
-      </li>
+      </div>
     </ul>
   </div>
 

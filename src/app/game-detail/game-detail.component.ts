@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { GameDetail } from '../gameDetail';
 import { GameDetailService } from '../game-detail.service';
 import { NGXLogger } from 'ngx-logger';
+import { PlayerMarker } from '../playerMarker';
 
 @Component({
   selector: 'app-game-detail',
@@ -13,6 +14,9 @@ import { NGXLogger } from 'ngx-logger';
 export class GameDetailComponent implements OnInit{
   
   gameDetail: GameDetail | undefined;
+  myTeamPlayerMarkerList: PlayerMarker[] = [];
+  opponentTeamPlayerMarkerList: PlayerMarker[] = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -24,12 +28,15 @@ export class GameDetailComponent implements OnInit{
   ngOnInit(): void {
     this.getGameDetailData()
     this.logger.info('GameDetail fetched with gameId: {}', this.gameDetail?.id)
+    this.logger.info('GameDetail data: {}', this.gameDetail)
   }
 
   getGameDetailData(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.gameDetailService.getGameDetail(id)
-      .subscribe(gameDetail => this.gameDetail = gameDetail)
+      .subscribe(gameDetail => {
+        this.gameDetail = gameDetail;
+      });
   }
 
   goBack(): void {

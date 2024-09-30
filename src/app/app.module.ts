@@ -21,6 +21,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({ declarations: [
@@ -38,6 +41,7 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     imports: [BrowserModule,
         FormsModule,
         AppRoutingModule,
+        DragDropModule,
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.
         // Remove it when a real server is ready to receive requests.
@@ -54,5 +58,5 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
         importProvidersFrom([
             HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
           ]), 
-          NGXLogger] })
+          NGXLogger, provideAnimationsAsync()] })
 export class AppModule { }

@@ -1,13 +1,11 @@
-import { Team } from "./team";
+import { InGameTeamData } from "./inGameTeamData";
 
 export interface GameDetail {
     id: number;
     date: Date,
     actualStartTime: Date,
-    myTeam: Team,
-    opponentTeam: Team,
+    myTeam: InGameTeamData,
+    opponentTeam: InGameTeamData,
     isHome: boolean,
-    myTeamGoals: number,
-    opponentTeamGoals: number,
     isComplete: Boolean
   }

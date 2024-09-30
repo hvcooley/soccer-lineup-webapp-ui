@@ -9,6 +9,13 @@
     margin-right: 20px; /* Adjust space between the two sections */
     align-self: flex-start; /* Aligns the upcoming games to the top of the container */
   }
+
+  .formation-display-container {
+    width: 800px;
+    height: 600px;
+    max-width: 100%;
+    background-color: #003b0a;
+  }
   
   label {
     color: #435960;
@@ -87,7 +94,38 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+  /*Styles for the formation display*/
   
+  .player-marker {
+    color: #2c3a41;
+    text-decoration: none;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em;
+    height: 2.5em;   /* Adjust to make it a circle */
+    width: 2.5em;    /* Same as height for a circle */
+    border-radius: 50%; /* This makes it a circle */
+    display: flex;   /* Flex to center the content */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+  
+  .player-marker:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+  }
+  
+  .player-marker:active {
+    background-color: #525252;
+    color: #fafafa;
+  }
+
+  .no-bullet {
+    list-style-type: none;
+  }
+
   /* My Team specific styles (can be extended later) */
   .my-team-players {
     /* Add specific styles here if needed in the future */

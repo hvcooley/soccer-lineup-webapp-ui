@@ -48,12 +48,12 @@ button:disabled {
 }
 
 /* Players List Styles */
-.team-players li {
+.team-players div {
   position: relative;
   cursor: pointer;
 }
 
-.team-players li:hover {
+.team-players div:hover {
   left: .1em;
 }
 
@@ -98,12 +98,12 @@ button:disabled {
 }
 
 /* Upcoming Games List Styles */
-.team-upcoming-games li {
+.team-upcoming-games div {
   position: relative;
   cursor: pointer;
 }
 
-.team-upcoming-games li:hover {
+.team-upcoming-games div:hover {
   left: .1em;
 }
 
@@ -148,12 +148,12 @@ button:disabled {
 }
 
 /* Results List Styles */
-.team-results li {
+.team-results div {
   position: relative;
   cursor: pointer;
 }
 
-.team-results li:hover {
+.team-results div:hover {
   left: .1em;
 }
 
