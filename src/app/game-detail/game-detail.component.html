@@ -10,13 +10,13 @@
           
           <ul class="opponent-team-formation formation">
             <div *ngFor="let player of gameDetail.opponentTeam.playersGameData">
-              <span class="player-marker" cdkDragBoundary=".formation-display-container" cdkDrag> #{{player.jerseyNum}}</span>
+              <span *ngIf="player.isOnField == true" class="player-marker" [style.--player-marker-color]="opponentColor" cdkDragBoundary=".formation-display-container" cdkDrag> #{{player.jerseyNum}}</span>
             </div>
           </ul>
 
           <ul class="my-team-formation formation formation">
             <div *ngFor="let player of gameDetail.myTeam.playersGameData">
-              <span class="player-marker" cdkDragBoundary=".formation-display-container" cdkDrag >#{{player.jerseyNum}}</span>
+              <span *ngIf="player.isOnField == true" class="player-marker" [style.--player-marker-color]="myTeamColor" cdkDragBoundary=".formation-display-container" cdkDrag >#{{player.jerseyNum}}</span>
             </div>
           </ul>
 

@@ -100,7 +100,7 @@
   .player-marker {
     color: #2c3a41;
     text-decoration: none;
-    background-color: #EEE;
+    background-color: var(--player-marker-color);
     margin: .5em;
     padding: .3em;
     height: 2.5em;   /* Adjust to make it a circle */
@@ -118,8 +118,8 @@
   }
   
   .player-marker:active {
-    background-color: #525252;
-    color: #fafafa;
+    background-color: var(--player-marker-color);
+    color: #2c3a41;
   }
 
   .no-bullet {

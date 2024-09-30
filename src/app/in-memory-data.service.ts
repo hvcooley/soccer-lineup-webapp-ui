@@ -75,10 +75,10 @@ export class InMemoryDataService implements InMemoryDbService {
 
   const gameDetails = [
     {id: 1, date: '2017-09-14', actualStartTime: '2017-09-14, 11:49:36 AM', 
-      myTeam: {id: 18, name: 'Delbarton Varsity Soccer 16/17', isFavorite: false, isMyTeam: true, 
+      myTeam: {id: 18, name: 'Delbarton Varsity Soccer 16/17', isFavorite: false, isMyTeam: true, color: 'green', 
         playersGameData: [
           {playerId: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: 11, jerseyNum: 10, position: 'CF', isStarter: true, isOnField: true, goals: 2, assists: 1},
-          {playerId: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 2, position: 'LB', isStarter: false, isOnField: true, goals: 1, assists: 1},
+          {playerId: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 21, position: 'LB', isStarter: false, isOnField: false, goals: 1, assists: 1},
           {playerId: 3, firstName: 'Iago', lastName: 'Robertson-Lavalle', teamId: 11, jerseyNum: 1, position: 'GK', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 4, firstName: 'Leo', lastName: 'Cooley', teamId: 11, jerseyNum: 39, position: 'CDM', isStarter: true, isOnField: true, goals: 0, assists: 1},
           {playerId: 5, firstName: 'Steven', lastName: 'Hadley', teamId: 11, jerseyNum: 13, position: 'CAM', isStarter: true, isOnField: true, goals: 1, assists: 0},
@@ -88,19 +88,19 @@ export class InMemoryDataService implements InMemoryDbService {
           {playerId: 9, firstName: 'Jack', lastName: 'Kielty', teamId: 11, jerseyNum: 15, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 10, firstName: 'Charles', lastName: 'Cadena', teamId: 11, jerseyNum: 8, position: 'CDM', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 11, firstName: 'Will', lastName: 'Stroud', teamId: 11, jerseyNum: 19, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0},
-          {playerId: 12, firstName: 'Lukasz', lastName: 'Matviejk', teamId: 11, jerseyNum: 12, position: 'ST', isStarter: false, isOnField: true, goals: 0, assists: 0},
-          {playerId: 14, firstName: 'Connor', lastName: 'Dolan', teamId: 11, jerseyNum: 11, position: 'RW', isStarter: false, isOnField: true, goals: 0, assists: 0},
-          {playerId: 15, firstName: 'Mark', lastName: 'Forbes', teamId: 11, jerseyNum: 4, position: 'CB', isStarter: false, isOnField: true, goals: 0, assists: 0},
-          {playerId: 16, firstName: 'Ivan', lastName: 'Ruiz', teamId: 11, jerseyNum: 11, position: 'CM', isStarter: false, isOnField: true, goals: 0, assists: 0},
-          {playerId: 17, firstName: 'Hudson', lastName: 'Lee', teamId: 11, jerseyNum: 17, position: 'LW', isStarter: false, isOnField: true, goals: 0, assists: 0}
+          {playerId: 12, firstName: 'Lukasz', lastName: 'Matviejk', teamId: 11, jerseyNum: 12, position: 'ST', isStarter: false, isOnField: false, goals: 0, assists: 0},
+          {playerId: 14, firstName: 'Connor', lastName: 'Dolan', teamId: 11, jerseyNum: 11, position: 'RW', isStarter: false, isOnField: false, goals: 0, assists: 0},
+          {playerId: 15, firstName: 'Mark', lastName: 'Forbes', teamId: 11, jerseyNum: 4, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0},
+          {playerId: 16, firstName: 'Ivan', lastName: 'Ruiz', teamId: 11, jerseyNum: 11, position: 'CM', isStarter: false, isOnField: false, goals: 0, assists: 0},
+          {playerId: 17, firstName: 'Hudson', lastName: 'Lee', teamId: 11, jerseyNum: 17, position: 'LW', isStarter: false, isOnField: false, goals: 0, assists: 0}
         ]
       }, 
-      opponentTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeam: false, 
+      opponentTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeam: false, color: 'blue',
         playersGameData: [
-          {playerId: 101, firstName: 'Jack', lastName: 'Smith', teamId: '18', jerseyNum: 10, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0},
-          {playerId: 102, firstName: 'John', lastName: 'Doe', teamId: '18', jerseyNum: 2, position: 'LB', isStarter: true, isOnField: true, goals: 0, assists: 0},
-          {playerId: 103, firstName: 'James', lastName: 'John', teamId: '18', jerseyNum: 26, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0},
-          {playerId: 104, firstName: 'Borris', lastName: 'Smith', teamId: '18', jerseyNum: 39, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0}
+          {playerId: 101, firstName: 'Jack', lastName: 'Smith', teamId: '18', jerseyNum: 2, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0},
+          {playerId: 102, firstName: 'John', lastName: 'Doe', teamId: '18', jerseyNum: 3, position: 'LB', isStarter: true, isOnField: true, goals: 0, assists: 0},
+          {playerId: 103, firstName: 'James', lastName: 'John', teamId: '18', jerseyNum: 4, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0},
+          {playerId: 104, firstName: 'Borris', lastName: 'Smith', teamId: '18', jerseyNum: 5, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0}
         ]
       }, 
       isHome: true, myTeamGoals: 3, opponentTeamGoals: 0, isComplete: false

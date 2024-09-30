@@ -14,8 +14,10 @@ import { PlayerMarker } from '../playerMarker';
 export class GameDetailComponent implements OnInit{
   
   gameDetail: GameDetail | undefined;
-  myTeamPlayerMarkerList: PlayerMarker[] = [];
-  opponentTeamPlayerMarkerList: PlayerMarker[] = [];
+
+  opponentColor = 'red';
+  myTeamColor = 'red';
+
 
 
   constructor(
@@ -36,6 +38,8 @@ export class GameDetailComponent implements OnInit{
     this.gameDetailService.getGameDetail(id)
       .subscribe(gameDetail => {
         this.gameDetail = gameDetail;
+        this.myTeamColor = gameDetail.myTeam.color
+        this.opponentColor = gameDetail.opponentTeam.color
       });
   }
 
