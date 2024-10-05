@@ -1,0 +1,138 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligns both sections to the top */
+  }
+  
+  .players-stats-container {
+    flex: 1; /* This allows all sections to take equal space */
+    margin-right: 20px; /* Adjust space between the two sections */
+    align-self: flex-start; /* Aligns the upcoming games to the top of the container */
+  }
+
+  .formation-display-container {
+    width: 800px;
+    height: 600px;
+    max-width: 100%;
+    background-color: #003b0a;
+  }
+  
+  label {
+    color: #435960;
+    font-weight: bold;
+  }
+  
+  input {
+    font-size: 1em;
+    padding: .5rem;
+  }
+  
+  button {
+    margin-top: 20px;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+  
+  /* Common styles shared between both teams */
+  .team-players li {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .team-players li:hover {
+    left: .1em;
+  }
+  
+  .team-players a {
+    color: #333;
+    text-decoration: none;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+    display: block;
+    width: 20.6em;
+  }
+  
+  .team-players a:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+  }
+  
+  .team-players a:active {
+    background-color: #525252;
+    color: #fafafa;
+  }
+  
+  .team-players .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color: #405061;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    min-width: 16px;
+    width: 5.0em;
+    text-align: center;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+
+  /*Styles for the formation display*/
+  
+  .player-marker {
+    color: #2c3a41;
+    text-decoration: none;
+    background-color: var(--player-marker-color);
+    margin: .5em;
+    padding: .3em;
+    height: 2.5em;   /* Adjust to make it a circle */
+    width: 2.5em;    /* Same as height for a circle */
+    border-radius: 50%; /* This makes it a circle */
+    display: flex;   /* Flex to center the content */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+  
+  .player-marker:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+  }
+  
+  .player-marker:active {
+    background-color: var(--player-marker-color);
+    color: #2c3a41;
+  }
+
+  .no-bullet {
+    list-style-type: none;
+  }
+
+  /* My Team specific styles (can be extended later) */
+  .my-team-players {
+    /* Add specific styles here if needed in the future */
+  }
+  
+  /* Opponent Team specific styles (can be extended later) */
+  .opponent-team-players {
+    /* Add specific styles here if needed in the future */
+  }
+  

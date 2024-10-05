@@ -20,6 +20,10 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({ declarations: [
@@ -30,12 +34,14 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
         TeamSearchComponent,
         PlayerDetailComponent,
         TestComponent,
-        TestCopyComponent
+        TestCopyComponent,
+        GameDetailComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
         FormsModule,
         AppRoutingModule,
+        DragDropModule,
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.
         // Remove it when a real server is ready to receive requests.
@@ -52,5 +58,5 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
         importProvidersFrom([
             HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
           ]), 
-          NGXLogger] })
+          NGXLogger, provideAnimationsAsync()] })
 export class AppModule { }

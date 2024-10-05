@@ -1,1 +1,47 @@
-<p>game-detail works!</p>
+<div *ngIf="gameDetail" class="header">
+    <h2>{{gameDetail.myTeam.name}} vs {{gameDetail.opponentTeam.name}} {{gameDetail.date}}</h2>
+    
+    <!-- <h2>{{gameDetail?.myTeam?.name}} vs {{gameDetail?.opponentTeam?.name}}</h2> -->
+
+    
+    <div *ngIf="gameDetail" class="container">
+
+        <div class="formation-display-container">
+          
+          <ul class="opponent-team-formation formation">
+            <div *ngFor="let player of gameDetail.opponentTeam.playersGameData">
+              <span *ngIf="player.isOnField == true" class="player-marker" [style.--player-marker-color]="opponentColor" cdkDragBoundary=".formation-display-container" cdkDrag> #{{player.jerseyNum}}</span>
+            </div>
+          </ul>
+
+          <ul class="my-team-formation formation formation">
+            <div *ngFor="let player of gameDetail.myTeam.playersGameData">
+              <span *ngIf="player.isOnField == true" class="player-marker" [style.--player-marker-color]="myTeamColor" cdkDragBoundary=".formation-display-container" cdkDrag >#{{player.jerseyNum}}</span>
+            </div>
+          </ul>
+
+        </div>
+      
+        <div class="players-stats-container">
+            <h3>{{gameDetail.myTeam.name}} Players Stats:</h3>
+            <ul class="my-team-players team-players">
+              <div *ngFor="let player of gameDetail.myTeam.playersGameData">
+                <a routerLink="/detail/{{player.playerId}}">
+                  <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+                </a>
+              </div>
+            </ul>
+            
+            <h3>{{gameDetail.opponentTeam.name}} Players Stats:</h3>
+            <ul class="opponent-team-players team-players">
+              <div *ngFor="let player of gameDetail.opponentTeam.playersGameData">
+                <a routerLink="/detail/{{player.playerId}}">
+                  <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+                </a>
+              </div>
+            </ul>
+
+        </div>
+            
+    </div>
+</div>

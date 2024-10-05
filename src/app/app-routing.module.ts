@@ -8,6 +8,7 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 
 import { TestComponent } from './test/test.component';
 import { TestCopyComponent } from './test-copy/test.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'detail/:id', component: TeamDetailComponent },
-  
+  { path: 'gameDetails/:id', component: GameDetailComponent },
   { path: 'test', component: TestComponent },
   { path: 'test-copy', component: TestCopyComponent }
 ];
