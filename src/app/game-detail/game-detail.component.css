@@ -1,7 +1,10 @@
 .container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Aligns both sections to the top */
+    /* justify-content: space-between; */
+    /* align-items: flex-start; Aligns both sections to the top */
+    position: relative;
+    padding: 20px; /* Add some padding for breathing space */
+    background-color: #f8f8f8; /* Ensure background contrast */
   }
   
   .players-stats-container {
@@ -15,6 +18,15 @@
     height: 600px;
     max-width: 100%;
     background-color: #003b0a;
+  }
+
+  .formation-display-canvas-wrapper {
+    flex: 2;
+    position: relative;
+    display: inline-block;
+    border: 5px solid red; /* Border around the wrapper */
+    background-color: #003b0a;
+    padding: 10px; /* Adjust padding if necessary */
   }
   
   label {

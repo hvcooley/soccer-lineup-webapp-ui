@@ -1,0 +1,7 @@
+.formation-display-canvas-wrapper {
+    flex: 2;
+    position: relative;
+    display: inline-block;
+    border: 5px solid red; /* Border around the wrapper */
+    padding: 10px; /* Adjust padding if necessary */
+  }

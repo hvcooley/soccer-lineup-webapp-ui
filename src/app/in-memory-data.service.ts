@@ -89,7 +89,7 @@ export class InMemoryDataService implements InMemoryDbService {
           {playerId: 10, firstName: 'Charles', lastName: 'Cadena', teamId: 11, jerseyNum: 8, position: 'CDM', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 11, firstName: 'Will', lastName: 'Stroud', teamId: 11, jerseyNum: 19, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 12, firstName: 'Lukasz', lastName: 'Matviejk', teamId: 11, jerseyNum: 12, position: 'ST', isStarter: false, isOnField: false, goals: 0, assists: 0},
-          {playerId: 14, firstName: 'Connor', lastName: 'Dolan', teamId: 11, jerseyNum: 11, position: 'RW', isStarter: false, isOnField: false, goals: 0, assists: 0},
+          {playerId: 14, firstName: 'Connor', lastName: 'Dolan', teamId: 11, jerseyNum: 14, position: 'RW', isStarter: false, isOnField: false, goals: 0, assists: 0},
           {playerId: 15, firstName: 'Mark', lastName: 'Forbes', teamId: 11, jerseyNum: 4, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 16, firstName: 'Ivan', lastName: 'Ruiz', teamId: 11, jerseyNum: 11, position: 'CM', isStarter: false, isOnField: false, goals: 0, assists: 0},
           {playerId: 17, firstName: 'Hudson', lastName: 'Lee', teamId: 11, jerseyNum: 17, position: 'LW', isStarter: false, isOnField: false, goals: 0, assists: 0}
