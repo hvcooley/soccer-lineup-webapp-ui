@@ -5,19 +5,14 @@
     position: relative;
     padding: 20px; /* Add some padding for breathing space */
     background-color: #f8f8f8; /* Ensure background contrast */
+    flex-direction: row;
   }
   
   .players-stats-container {
     flex: 1; /* This allows all sections to take equal space */
     margin-right: 20px; /* Adjust space between the two sections */
     align-self: flex-start; /* Aligns the upcoming games to the top of the container */
-  }
-
-  .formation-display-container {
-    width: 800px;
-    height: 600px;
-    max-width: 100%;
-    background-color: #003b0a;
+    flex-grow: 1;
   }
 
   .formation-display-canvas-wrapper {
@@ -27,6 +22,10 @@
     border: 5px solid red; /* Border around the wrapper */
     background-color: #003b0a;
     padding: 10px; /* Adjust padding if necessary */
+    width: 800px;
+    height: 600px;
+    max-width: 800px;
+    margin-right: 20px;
   }
   
   label {

@@ -22,10 +22,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   opponentColor = 'red';
   myTeamColor = 'blue';
 
-  circles: Circle[] = [
-    { x: 50, y: 50, radius: 25, isDragging: false, color: 'red' },
-    { x: 100, y: 100, radius: 25, isDragging: false, color: 'red' },
-  ];
+  circles: Circle[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +33,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getGameDetailData();
-    this.logger.info('GameDetail fetched with gameId: {}', this.gameDetail?.id);
+    this.logger.info(`GameDetail fetched with gameId: ${this.gameDetail?.id}`);
     this.logger.info('GameDetail data: {}', this.gameDetail);
   }
 
@@ -72,6 +69,9 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     });
 
     this.drawCircles();
+
+    this.logger.info(`The circles list contains ${this.circles.length} circles`);
+
   }
 
   getGameDetailData(): void {
@@ -81,8 +81,25 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         this.gameDetail = gameDetail;
         this.myTeamColor = gameDetail.myTeam.color;
         this.opponentColor = gameDetail.opponentTeam.color;
+  
+        // Now that the gameDetail data is available, populate the circles array
+        let xIncr = 0;
+        for (const player of this.gameDetail.myTeam.playersGameData) {
+          if (player.isOnField == true){
+            const playerCircle: Circle = { x: 50 + xIncr, y: 50, radius: 20, isDragging: false, color: this.myTeamColor };
+            this.circles.push(playerCircle);
+            xIncr += 25;
+          }
+        }
+  
+        // Draw circles after they've been initialized
+        this.drawCircles();
+        
+        // Log the number of circles
+        this.logger.info(`The circles list now contains ${this.circles.length} circles after gameDetail is loaded`);
       });
   }
+  
 
   goBack(): void {
     this.location.back();
