@@ -4,4 +4,5 @@ export interface Circle {
     radius: number;
     isDragging: boolean;
     color: string;
+    numberDisplayed: number;
   }

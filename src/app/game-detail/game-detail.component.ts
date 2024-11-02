@@ -5,6 +5,7 @@ import { GameDetail } from '../gameDetail';
 import { GameDetailService } from '../game-detail.service';
 import { NGXLogger } from 'ngx-logger';
 import { Circle } from '../Circle';
+import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
 
 @Component({
   selector: 'app-game-detail',
@@ -12,6 +13,9 @@ import { Circle } from '../Circle';
   styleUrl: './game-detail.component.css'
 })
 export class GameDetailComponent implements OnInit, AfterViewInit {
+
+  readonly gameDetailFieldWidth = FIELD_PIXEL_WIDTH;
+  readonly gameDetailFieldHeight = FIELD_PIXEL_HEIGHT;
 
   @ViewChild('myCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>; // Corrected selector
   canvas!: HTMLCanvasElement;
@@ -29,7 +33,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     private gameDetailService: GameDetailService,
     private logger: NGXLogger,
     private location: Location,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getGameDetailData();
@@ -81,25 +85,23 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         this.gameDetail = gameDetail;
         this.myTeamColor = gameDetail.myTeam.color;
         this.opponentColor = gameDetail.opponentTeam.color;
-  
+
         // Now that the gameDetail data is available, populate the circles array
-        let xIncr = 0;
         for (const player of this.gameDetail.myTeam.playersGameData) {
-          if (player.isOnField == true){
-            const playerCircle: Circle = { x: 50 + xIncr, y: 50, radius: 20, isDragging: false, color: this.myTeamColor };
+          if (player.isOnField == true) {
+            const playerCircle: Circle = { x: player.circleXCoord, y: player.circleYCoord, radius: 20, isDragging: false, color: this.myTeamColor, numberDisplayed: player.jerseyNum };
             this.circles.push(playerCircle);
-            xIncr += 25;
           }
         }
-  
+
         // Draw circles after they've been initialized
         this.drawCircles();
-        
+
         // Log the number of circles
         this.logger.info(`The circles list now contains ${this.circles.length} circles after gameDetail is loaded`);
       });
   }
-  
+
 
   goBack(): void {
     this.location.back();
@@ -111,6 +113,15 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     this.ctx.fillStyle = circle.color; // Set the fill color
     this.ctx.fill(); // Fill the circle with the specified color
     this.ctx.stroke(); // Optionally, stroke the outline of the circle
+
+    // Set the text style and alignment
+    this.ctx.fillStyle = 'black'; // Set the text color, adjust as needed
+    this.ctx.font = `${circle.radius * 0.8}px Arial`; // Adjust font size based on circle size
+    this.ctx.textAlign = 'center';
+    this.ctx.textBaseline = 'middle';
+
+    // Draw the number inside the circle
+    this.ctx.fillText(circle.numberDisplayed.toString(), circle.x, circle.y);
   }
 
   drawCircles() {

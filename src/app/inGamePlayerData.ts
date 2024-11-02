@@ -9,4 +9,7 @@ export interface InGamePlayerData {
     isOnField: Boolean;
     goals: number;
     assists: number;
+    circleId: number;
+    circleXCoord: number;
+    circleYCoord: number;
   }
