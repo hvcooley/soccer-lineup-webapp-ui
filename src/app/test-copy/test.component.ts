@@ -19,8 +19,8 @@ export class TestCopyComponent {
   myTeamColor = 'blue';
 
   circles: Circle[] = [
-    { x: 50, y: 50, radius: 25, isDragging: false, color: 'red', numberDisplayed: 7 },
-    { x: 100, y: 100, radius: 25, isDragging: false, color: 'red', numberDisplayed: 10},
+    { x: 50, y: 50, radius: 25, isDragging: false, primaryColor: 'red', secondaryColor: 'white', numberDisplayed: 7, playerLastName: 'Cooley'},
+    { x: 100, y: 100, radius: 25, isDragging: false, primaryColor: 'red', secondaryColor: 'white', numberDisplayed: 10, playerLastName: 'Smith'},
   ];
 
     constructor(

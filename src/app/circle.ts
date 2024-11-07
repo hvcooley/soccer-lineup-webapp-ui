@@ -3,6 +3,8 @@ export interface Circle {
     y: number;
     radius: number;
     isDragging: boolean;
-    color: string;
+    primaryColor: string;
+    secondaryColor: string;
     numberDisplayed: number;
+    playerLastName: string;
   }

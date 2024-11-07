@@ -83,13 +83,14 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     this.gameDetailService.getGameDetail(id)
       .subscribe(gameDetail => {
         this.gameDetail = gameDetail;
-        this.myTeamColor = gameDetail.myTeam.color;
-        this.opponentColor = gameDetail.opponentTeam.color;
+        this.myTeamColor = gameDetail.myTeam.primaryColor;
+        this.opponentColor = gameDetail.opponentTeam.primaryColor;
 
         // Now that the gameDetail data is available, populate the circles array
         for (const player of this.gameDetail.myTeam.playersGameData) {
           if (player.isOnField == true) {
-            const playerCircle: Circle = { x: player.circleXCoord, y: player.circleYCoord, radius: 20, isDragging: false, color: this.myTeamColor, numberDisplayed: player.jerseyNum };
+            const playerCircle: Circle = { x: player.circleXCoord, y: player.circleYCoord, radius: 20, isDragging: false, 
+              primaryColor: this.myTeamColor, secondaryColor: gameDetail.myTeam.secondaryColor, numberDisplayed: player.jerseyNum, playerLastName: player.lastName };
             this.circles.push(playerCircle);
           }
         }
@@ -108,21 +109,26 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   }
 
   drawCircle(circle: Circle) {
+    // Draw the circle
     this.ctx.beginPath();
     this.ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    this.ctx.fillStyle = circle.color; // Set the fill color
+    this.ctx.fillStyle = circle.primaryColor; // Set the fill color
     this.ctx.fill(); // Fill the circle with the specified color
     this.ctx.stroke(); // Optionally, stroke the outline of the circle
 
-    // Set the text style and alignment
-    this.ctx.fillStyle = 'black'; // Set the text color, adjust as needed
+    // Draw the player’s number inside the circle
+    this.ctx.fillStyle = circle.secondaryColor; // Set the text color
     this.ctx.font = `${circle.radius * 0.8}px Arial`; // Adjust font size based on circle size
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-
-    // Draw the number inside the circle
     this.ctx.fillText(circle.numberDisplayed.toString(), circle.x, circle.y);
-  }
+
+    // Draw the player's name below the circle
+    const textYPosition = circle.y + circle.radius + 10; // Position below the circle
+    this.ctx.font = `${circle.radius * 0.5}px Arial`; // Smaller font for the name
+    this.ctx.fillStyle = circle.secondaryColor; // Set the text color for the name
+    this.ctx.fillText(circle.playerLastName, circle.x, textYPosition);
+}
 
   drawCircles() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

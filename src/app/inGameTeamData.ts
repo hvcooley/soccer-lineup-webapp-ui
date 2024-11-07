@@ -5,5 +5,6 @@ export interface InGameTeamData {
     name: string;
     playersGameData: InGamePlayerData[];
     isMyTeam: boolean;
-    color: string;
+    primaryColor: string;
+    secondaryColor: string;
   }

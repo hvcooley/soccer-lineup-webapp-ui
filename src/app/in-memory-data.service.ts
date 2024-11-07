@@ -56,7 +56,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
   const players = [
     {id: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: 11, jerseyNum: 10, position: 'CF'},
-    {id: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 2, position: 'LB'},
+    {id: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 21, position: 'LB'},
     {id: 3, firstName: 'Andrew', lastName: 'Carolan', teamId: 11, jerseyNum: 26, position: 'CB'},
     {id: 4, firstName: 'Leo', lastName: 'Cooley', teamId: 11, jerseyNum: 39, position: 'CDM'}
   ]
@@ -76,7 +76,7 @@ export class InMemoryDataService implements InMemoryDbService {
   //Dimenions of the field in pixels are width: 800, height: 600
   const gameDetails = [
     {id: 1, date: '2017-09-14', actualStartTime: '2017-09-14, 11:49:36 AM', 
-      myTeam: {id: 18, name: 'Delbarton Varsity Soccer 16/17', isFavorite: false, isMyTeam: true, color: 'green', 
+      myTeam: {id: 18, name: 'Delbarton Varsity Soccer 16/17', isFavorite: false, isMyTeam: true, primaryColor: '#032a03', secondaryColor: '#f8f8f8',
         playersGameData: [
           {playerId: 1, firstName: 'Harrison', lastName: 'Cooley', teamId: 11, jerseyNum: 10, position: 'CF', isStarter: true, isOnField: true, goals: 2, assists: 1, circleId: 1, circleXCoord: 400, circleYCoord: 350},
           {playerId: 2, firstName: 'Eric', lastName: 'Hsieh', teamId: 11, jerseyNum: 21, position: 'LB', isStarter: true, isOnField: true, goals: 1, assists: 1, circleId: 2, circleXCoord: 100, circleYCoord: 650},
@@ -88,15 +88,15 @@ export class InMemoryDataService implements InMemoryDbService {
           {playerId: 8, firstName: 'Brian', lastName: 'Finn', teamId: 11, jerseyNum: 2, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 8, circleXCoord: 500, circleYCoord: 650},
           {playerId: 9, firstName: 'Jack', lastName: 'Kielty', teamId: 11, jerseyNum: 15, position: 'CB', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 9, circleXCoord: null, circleYCoord: null},
           {playerId: 10, firstName: 'Charles', lastName: 'Cadena', teamId: 11, jerseyNum: 8, position: 'CDM', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 10, circleXCoord: 500, circleYCoord: 500},
-          {playerId: 11, firstName: 'Will', lastName: 'Stroud', teamId: 11, jerseyNum: 19, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 11, circleXCoord: 700, circleYCoord: 400},
-          {playerId: 12, firstName: 'Lukasz', lastName: 'Matviejk', teamId: 11, jerseyNum: 12, position: 'ST', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 12, circleXCoord: null, circleYCoord: null},
+          {playerId: 11, firstName: 'Will', lastName: 'Stroud', teamId: 11, jerseyNum: 18, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 11, circleXCoord: 700, circleYCoord: 400},
+          {playerId: 12, firstName: 'Lukasz', lastName: 'Matviejk', teamId: 11, jerseyNum: 19, position: 'ST', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 12, circleXCoord: null, circleYCoord: null},
           {playerId: 14, firstName: 'Connor', lastName: 'Dolan', teamId: 11, jerseyNum: 14, position: 'RW', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 13, circleXCoord: null, circleYCoord: null},
-          {playerId: 15, firstName: 'Mark', lastName: 'Forbes', teamId: 11, jerseyNum: 4, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 14, circleXCoord: 700, circleYCoord: 650},
+          {playerId: 15, firstName: 'Mark', lastName: 'Forbes', teamId: 11, jerseyNum: 12, position: 'CB', isStarter: true, isOnField: true, goals: 0, assists: 0, circleId: 14, circleXCoord: 700, circleYCoord: 650},
           {playerId: 16, firstName: 'Ivan', lastName: 'Ruiz', teamId: 11, jerseyNum: 11, position: 'CM', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 15, circleXCoord: null, circleYCoord: null},
           {playerId: 17, firstName: 'Hudson', lastName: 'Lee', teamId: 11, jerseyNum: 17, position: 'LW', isStarter: false, isOnField: false, goals: 0, assists: 0, circleId: 16, circleXCoord: null, circleYCoord: null}
         ]
       }, 
-      opponentTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeam: false, color: 'blue',
+      opponentTeam: {id: 18, name: 'Chatham', isFavorite: false, isMyTeam: false, primaryColor: 'blue', secondaryColor: '#f8f8f8',
         playersGameData: [
           {playerId: 101, firstName: 'Jack', lastName: 'Smith', teamId: '18', jerseyNum: 2, position: 'RB', isStarter: true, isOnField: true, goals: 0, assists: 0},
           {playerId: 102, firstName: 'John', lastName: 'Doe', teamId: '18', jerseyNum: 3, position: 'LB', isStarter: true, isOnField: true, goals: 0, assists: 0},
