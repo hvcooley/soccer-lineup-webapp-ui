@@ -6,6 +6,7 @@ import { GameDetailService } from '../game-detail.service';
 import { NGXLogger } from 'ngx-logger';
 import { Circle } from '../Circle';
 import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
+import { InGamePlayerData } from '../inGamePlayerData';
 
 @Component({
   selector: 'app-game-detail',
@@ -22,6 +23,10 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   ctx!: CanvasRenderingContext2D;
 
   gameDetail: GameDetail | undefined;
+  myTeamPlayersOnField: InGamePlayerData[] = [];
+  myTeamPlayersOnBench: InGamePlayerData[] = [];
+  opponentTeamPlayersOnField: InGamePlayerData[] = [];
+  opponentTeamPlayersOnBench: InGamePlayerData[] = [];
 
   opponentColor = 'red';
   myTeamColor = 'blue';
@@ -85,6 +90,10 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         this.gameDetail = gameDetail;
         this.myTeamColor = gameDetail.myTeam.primaryColor;
         this.opponentColor = gameDetail.opponentTeam.primaryColor;
+        this.myTeamPlayersOnField = gameDetail.myTeam.playersGameData.filter(player => player.isOnField);
+        this.myTeamPlayersOnBench = gameDetail.myTeam.playersGameData.filter(player => player.isOnField === false)
+        this.opponentTeamPlayersOnField = gameDetail.opponentTeam.playersGameData.filter(player => player.isOnField);
+        this.opponentTeamPlayersOnBench = gameDetail.opponentTeam.playersGameData.filter(player => player.isOnField === false)
 
         // Now that the gameDetail data is available, populate the circles array
         for (const player of this.gameDetail.myTeam.playersGameData) {

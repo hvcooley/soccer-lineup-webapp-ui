@@ -26,25 +26,42 @@
 
     </div> -->
   
-    <div *ngIf="gameDetail" class="players-stats-container">
-        <h3>{{gameDetail.myTeam.name}} Players Stats:</h3>
+    <div *ngIf="gameDetail" class="my-players-stats-container">
+      <h3>{{gameDetail.myTeam.name}} Players Stats:</h3>
         <ul class="my-team-players team-players">
-          <div *ngFor="let player of gameDetail.myTeam.playersGameData">
+          <div *ngFor="let player of myTeamPlayersOnField">
             <a routerLink="/detail/{{player.playerId}}">
               <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
             </a>
           </div>
         </ul>
-        
-        <h3>{{gameDetail.opponentTeam.name}} Players Stats:</h3>
-        <ul class="opponent-team-players team-players">
-          <div *ngFor="let player of gameDetail.opponentTeam.playersGameData">
+      <h3>{{gameDetail.myTeam.name}} Subs:</h3>
+        <ul class="my-team-players team-players">
+          <div *ngFor="let player of myTeamPlayersOnBench">
             <a routerLink="/detail/{{player.playerId}}">
               <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
             </a>
           </div>
         </ul>
+    </div>
 
+    <div *ngIf="gameDetail" class="opponent-player-stats-container">
+      <h3>{{gameDetail.opponentTeam.name}} Players Stats:</h3>
+        <ul class="opponent-team-players team-players">
+          <div *ngFor="let player of opponentTeamPlayersOnField">
+            <a routerLink="/detail/{{player.playerId}}">
+              <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+            </a>
+          </div>
+        </ul>
+      <h3>{{gameDetail.opponentTeam.name}} Subs:</h3>
+        <ul class="opponent-team-players team-players">
+          <div *ngFor="let player of opponentTeamPlayersOnBench">
+            <a routerLink="/detail/{{player.playerId}}">
+              <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+            </a>
+          </div>
+        </ul>
     </div>
         
 </div>
