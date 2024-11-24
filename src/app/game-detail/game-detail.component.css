@@ -12,6 +12,7 @@
     flex: 1; /* This allows all sections to take equal space */
     margin-right: 20px; /* Adjust space between the two sections */
     align-self: flex-start; /* Aligns the upcoming games to the top of the container */
+    list-style-type: none;
     flex-grow: 1;
   }
 
@@ -82,7 +83,7 @@
     height: 1.6em;
     border-radius: 4px;
     display: block;
-    width: 20.6em;
+    width: 15.6em;
   }
   
   .team-players a:hover {
@@ -112,6 +113,115 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+  /* Ensure the container of each player item does not interfere */
+.player-item {
+  position: relative;
+  display: flex; /* Flexbox ensures proper alignment */
+  align-items: center; /* Vertically align content */
+  gap: 8px; /* Adds spacing between the link and the button */
+  margin: 0.3em 0; /* Adjust the vertical spacing (top and bottom) */
+  padding: 0.2em 0; /* Adjust the inner spacing of the player item */
+}
+
+.player-item a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  /* margin: .5em; */
+  /* padding: .3em 0; */
+  height: 1.6em;
+  border-radius: 4px;
+  display: block;
+  width: 15.6em;
+
+  margin: 0; /* Remove unnecessary margin */
+  padding: 0.3em 0em; /* Adjust padding for better spacing */
+  /* height: auto; */
+  /* width: auto; */
+}
+
+
+
+.player-item li {
+  position: relative;
+  cursor: pointer;
+}
+
+.player-item li:hover {
+  left: .1em;
+}
+
+.player-item .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  min-width: 16px;
+  width: 5.0em;
+  text-align: center;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.player-item a:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+}
+
+.player-item a:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+/* Adjustments for the Increment/Decrement Goal button */
+.button-group {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 2px; /* Add some spacing between buttons */
+  
+}
+
+.button-group {
+  text-align: center;
+}
+
+button.tally {
+  position: static; /* Remove absolute positioning */
+  font-size: 0.6rem;
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button.increment {
+  background-color: rgb(5, 183, 29);
+  color: white;
+  
+}
+
+button.increment:hover {
+  background-color: white;
+  color: rgb(5, 183, 29);
+}
+
+button.decrement {
+  background-color: rgb(230, 10, 10);
+  color: white;
+  
+}
+
+button.decrement:hover {
+  background-color: white;
+  color: rgb(230, 10, 10);
+}
+
 
   /*Styles for the formation display*/
   

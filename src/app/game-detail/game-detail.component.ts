@@ -117,6 +117,14 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     this.location.back();
   }
 
+  increaseGoals(): void {
+    this.logger.info('Adding a goal to player _____')
+  }
+
+  decreaseGoals(): void {
+    this.logger.info('Removing a goal from player _____')
+  }
+
   drawCircle(circle: Circle) {
     // Draw the circle
     this.ctx.beginPath();

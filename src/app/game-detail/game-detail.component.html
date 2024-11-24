@@ -36,13 +36,18 @@
           </div>
         </ul>
       <h3>{{gameDetail.myTeam.name}} Subs:</h3>
-        <ul class="my-team-players team-players">
-          <div *ngFor="let player of myTeamPlayersOnBench">
-            <a routerLink="/detail/{{player.playerId}}">
-              <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
-            </a>
-          </div>
-        </ul>
+          <ul *ngFor="let player of myTeamPlayersOnBench">
+            <div class="player-item">
+              <a routerLink="/detail/{{player.playerId}}">
+                <span class="badge">#{{player.jerseyNum}} - {{player.position}}</span> {{player.firstName}} {{player.lastName}}
+              </a>
+              {{player.goals}}
+              <div class="button-group">
+                <button type="button" class="increment tally" title="Add Goal" (click)="increaseGoals()">+</button>
+                <button type="button" class="decrement tally" title="Subtract Goal" (click)="decreaseGoals()">-</button>
+              </div>
+            </div>
+          </ul>          
     </div>
 
     <div *ngIf="gameDetail" class="opponent-player-stats-container">
