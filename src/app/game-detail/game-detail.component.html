@@ -47,7 +47,7 @@
                 <button type="button" class="decrement tally" title="Subtract Goal" (click)="decreaseGoals()">-</button>
               </div>
             </div>
-          </ul>          
+          </ul>
     </div>
 
     <div *ngIf="gameDetail" class="opponent-player-stats-container">
@@ -67,6 +67,18 @@
             </a>
           </div>
         </ul>
+    </div>
+
+    <div>
+      <!-- AG Grid for player data -->
+        <ag-grid-angular
+          class="ag-theme-alpine"
+          style="width: 40%; height: 400px;"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [rowData]="rowData"
+          (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
     </div>
         
 </div>

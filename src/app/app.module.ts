@@ -23,6 +23,9 @@ import { PlayerDetailComponent } from './player-detail/player-detail.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 
 
@@ -42,6 +45,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         FormsModule,
         AppRoutingModule,
         DragDropModule,
+        MatTableModule,
+        MatButtonModule,
+        AgGridModule,
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.
         // Remove it when a real server is ready to receive requests.

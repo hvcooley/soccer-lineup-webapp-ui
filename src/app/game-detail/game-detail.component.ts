@@ -7,6 +7,8 @@ import { NGXLogger } from 'ngx-logger';
 import { Circle } from '../Circle';
 import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
 import { InGamePlayerData } from '../inGamePlayerData';
+import { MatTableDataSource } from '@angular/material/table';
+import { ColDef, GridApi, INumberCellEditorParams } from '@ag-grid-community/core';
 
 @Component({
   selector: 'app-game-detail',
@@ -21,6 +23,27 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   @ViewChild('myCanvas', { static: false }) canvasRef!: ElementRef<HTMLCanvasElement>; // Corrected selector
   canvas!: HTMLCanvasElement;
   ctx!: CanvasRenderingContext2D;
+
+  gridApi!: GridApi;
+  columnDefs: ColDef[] = [
+    { field: 'playerName', headerName: 'Player Name', editable: true },
+    { field: 'goals', headerName: 'Goals', editable: true , cellEditor: "agNumberCellEditor",
+      cellEditorParams: {
+        precision: 2,
+        step: 0.25,
+        showStepperButtons: true,
+      } as INumberCellEditorParams,},
+  ];
+  defaultColDef: ColDef = {
+    sortable: true,
+    filter: true,
+    editable: true,
+    width: 200
+  };
+  //rowData: any[] = [];
+
+  public rowData: any[] | null = data;
+
 
   gameDetail: GameDetail | undefined;
   myTeamPlayersOnField: InGamePlayerData[] = [];
@@ -112,6 +135,9 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
       });
   }
 
+  onGridReady(params: any): void {
+    this.gridApi = params.api;
+  }
 
   goBack(): void {
     this.location.back();
@@ -161,3 +187,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     return null;
   }
 }
+
+const data = Array.from(Array(20).keys()).map((val: any, index: number) => ({
+  number: index,
+}));
