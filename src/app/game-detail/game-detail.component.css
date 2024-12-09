@@ -35,6 +35,15 @@
     max-width: 800px; /* Must be the same value as FIELD_PIXEL_WIDTH */
     margin-right: 20px;
   }
+
+  .temporary-stats-container {
+    flex: 4; /* This allows all sections to take equal space */
+    margin-right: 20px; /* Adjust space between the two sections */
+    align-self: flex-start; /* Aligns the upcoming games to the top of the container */
+    list-style-type: none;
+    flex-grow: 1;
+    border: 5px solid pink; /* Border around the wrapper */
+  }
   
   label {
     color: #435960;

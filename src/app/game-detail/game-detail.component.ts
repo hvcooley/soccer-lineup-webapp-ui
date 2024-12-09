@@ -7,8 +7,20 @@ import { NGXLogger } from 'ngx-logger';
 import { Circle } from '../Circle';
 import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
 import { InGamePlayerData } from '../inGamePlayerData';
-import { MatTableDataSource } from '@angular/material/table';
-import { ColDef, GridApi, INumberCellEditorParams } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import {
+  ColDef,
+  ColGroupDef,
+  GridApi,
+  GridOptions,
+  GridReadyEvent,
+  INumberCellEditorParams,
+  Module,
+  ModuleRegistry,
+  createGrid,
+} from "@ag-grid-community/core";
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
+
 
 @Component({
   selector: 'app-game-detail',
@@ -16,6 +28,8 @@ import { ColDef, GridApi, INumberCellEditorParams } from '@ag-grid-community/cor
   styleUrl: './game-detail.component.css'
 })
 export class GameDetailComponent implements OnInit, AfterViewInit {
+
+  modules: Module[] = [ClientSideRowModelModule];
 
   readonly gameDetailFieldWidth = FIELD_PIXEL_WIDTH;
   readonly gameDetailFieldHeight = FIELD_PIXEL_HEIGHT;
@@ -25,16 +39,16 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   ctx!: CanvasRenderingContext2D;
 
   gridApi!: GridApi;
-  columnDefs: ColDef[] = [
+  public columnDefs: ColDef[] = [
     { field: 'playerName', headerName: 'Player Name', editable: true },
     { field: 'goals', headerName: 'Goals', editable: true , cellEditor: "agNumberCellEditor",
       cellEditorParams: {
         precision: 2,
-        step: 0.25,
+        step: 1,
         showStepperButtons: true,
       } as INumberCellEditorParams,},
   ];
-  defaultColDef: ColDef = {
+  public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
     editable: true,
@@ -43,6 +57,8 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   //rowData: any[] = [];
 
   public rowData: any[] | null = data;
+  public themeClass: string =
+    "ag-theme-quartz-dark";
 
 
   gameDetail: GameDetail | undefined;
@@ -67,6 +83,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     this.getGameDetailData();
     this.logger.info(`GameDetail fetched with gameId: ${this.gameDetail?.id}`);
     this.logger.info('GameDetail data: {}', this.gameDetail);
+    this.logger.info('The data const is {}', data)
   }
 
   ngAfterViewInit(): void {
@@ -187,6 +204,12 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     return null;
   }
 }
+
+// const data = [
+//   { playerName: 'John Doe', goals: 2 },
+//   { playerName: 'Jane Smith', goals: 1 },
+//   { playerName: 'Mike Johnson', goals: 3 },
+// ];
 
 const data = Array.from(Array(20).keys()).map((val: any, index: number) => ({
   number: index,
