@@ -26,6 +26,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { AgGridModule } from '@ag-grid-community/angular';
+import { TestAgGridComponent } from './test-ag-grid/test-ag-grid.component';
 
 
 
@@ -38,7 +39,8 @@ import { AgGridModule } from '@ag-grid-community/angular';
         PlayerDetailComponent,
         TestComponent,
         TestCopyComponent,
-        GameDetailComponent
+        GameDetailComponent,
+        TestAgGridComponent
     ],
     bootstrap: [AppComponent], 
     imports: [BrowserModule,
