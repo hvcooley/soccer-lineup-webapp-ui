@@ -25,7 +25,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { AgGridModule } from '@ag-grid-community/angular';
+import { AgGridAngular, AgGridModule } from '@ag-grid-community/angular';
 import { TestAgGridComponent } from './test-ag-grid/test-ag-grid.component';
 
 
@@ -49,6 +49,7 @@ import { TestAgGridComponent } from './test-ag-grid/test-ag-grid.component';
         DragDropModule,
         MatTableModule,
         MatButtonModule,
+        AgGridAngular,
         AgGridModule,
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.

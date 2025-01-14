@@ -1,10 +1,7 @@
-<html lang="en">
-    <head>
-        <!-- Includes all JS & CSS for the JavaScript Data Grid -->
-        <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
-    </head>
-    <body>
-        <!-- Your Data Grid container -->
-        <div id="myGrid" style="height: 500px"></div>
-    </body>
-</html>
+<ag-grid-angular
+  style="width: 820px; height: 400px;"
+  class="ag-theme-quartz"
+  [rowData]="rowData"
+  [columnDefs]="colDefs"
+  [defaultColDef]="defaultColDef">
+</ag-grid-angular>
