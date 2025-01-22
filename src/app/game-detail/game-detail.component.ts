@@ -8,8 +8,11 @@ import { Circle } from '../Circle';
 import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
 import { InGamePlayerData } from '../inGamePlayerData';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { AgGridAngular } from '@ag-grid-community/angular'; // Angular Data Grid Component
+import type { ColDef } from '@ag-grid-community/core'; // Column Definition Type Interface
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-quartz.css';
 import {
-  ColDef,
   ColGroupDef,
   GridApi,
   GridOptions,
@@ -39,27 +42,55 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   ctx!: CanvasRenderingContext2D;
 
   gridApi!: GridApi;
-  public columnDefs: ColDef[] = [
-    { field: 'playerName', headerName: 'Player Name', editable: true },
-    { field: 'goals', headerName: 'Goals', editable: true , cellEditor: "agNumberCellEditor",
-      cellEditorParams: {
-        precision: 2,
-        step: 1,
-        showStepperButtons: true,
-      } as INumberCellEditorParams,},
+
+  // Row Data: The soccer stat data to be displayed.
+  rowData = [
+    { Name: "Harrison Cooley", Position: "CF", Goals: 2, Assists: 0, Notes: "Stub"},
+    { Name: "Leo Cooley", Position: "CB", Goals: 0, Assists: 2, Notes: "Stub" },
+    { Name: "Andrew Carolan", Position: "CB", Goals: 0, Assists: 0, Notes: "Stub" },
   ];
-  public defaultColDef: ColDef = {
+
+  // Column Definitions: Defines the columns to be displayed.
+  colDefs: ColDef[] = [
+    { field: "Name", headerName: "Player", editable: false, width: 200 }, // Not editable
+    { field: "Position", headerName: "Position", editable: false, width: 125 }, // Not editable
+    {
+      field: "Goals",
+      headerName: "Goals",
+      editable: true,
+      cellEditor: 'agNumberCellEditor', // Enable Number Cell Editor
+      cellEditorParams: {
+        useFormatter: true,             // Format the value while editing
+        step: 1,                   // Increment step when using arrows
+        showStepperButtons: true
+      },
+      valueParser: (params) => parseInt(params.newValue, 10) || 0, // Ensure valid integer,
+      width: 100
+    },
+    {
+      field: "Assists",
+      headerName: "Assists",
+      editable: true,
+      cellEditor: 'agNumberCellEditor', // Enable Number Cell Editor
+      cellEditorParams: {
+        useFormatter: true,
+        increment: 1,
+        showStepperButtons: true
+      },
+      valueParser: (params) => parseInt(params.newValue, 10) || 0,
+      width: 100
+    },
+    {
+      field: "Notes", headerName: "Notes", editable: false, width: 100
+    }
+  ];
+
+  // Default column properties
+  defaultColDef: ColDef = {
+    resizable: true,
     sortable: true,
     filter: true,
-    editable: true,
-    width: 200
   };
-  //rowData: any[] = [];
-
-  public rowData: any[] | null = data;
-  public themeClass: string =
-    "ag-theme-quartz-dark";
-
 
   gameDetail: GameDetail | undefined;
   myTeamPlayersOnField: InGamePlayerData[] = [];
@@ -205,11 +236,6 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   }
 }
 
-// const data = [
-//   { playerName: 'John Doe', goals: 2 },
-//   { playerName: 'Jane Smith', goals: 1 },
-//   { playerName: 'Mike Johnson', goals: 3 },
-// ];
 
 const data = Array.from(Array(20).keys()).map((val: any, index: number) => ({
   number: index,

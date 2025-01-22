@@ -72,14 +72,14 @@
     <div *ngIf="gameDetail" class="temporary-stats-container">
       <div>    
       <!-- AG Grid for player data -->
-          <ag-grid-angular
-            class="ag-theme-alpine"
-            style="width: 40%; height: 400px;"
-            [columnDefs]="columnDefs"
-            [defaultColDef]="defaultColDef"
-            [rowData]="rowData"
-            (gridReady)="onGridReady($event)">
-          </ag-grid-angular>
+        <ag-grid-angular
+          style="width: 650px; height: 1000px;"
+          class="ag-theme-quartz"
+          [rowData]="rowData"
+          [columnDefs]="colDefs"
+          [defaultColDef]="defaultColDef">
+        </ag-grid-angular>
+    
       </div>
     </div>
       
