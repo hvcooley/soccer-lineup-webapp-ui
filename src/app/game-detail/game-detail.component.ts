@@ -43,12 +43,10 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
   gridApi!: GridApi;
 
-  // Row Data: The soccer stat data to be displayed.
-  rowData = [
-    { Name: "Harrison Cooley", Position: "CF", Goals: 2, Assists: 0, Notes: "Stub"},
-    { Name: "Leo Cooley", Position: "CB", Goals: 0, Assists: 2, Notes: "Stub" },
-    { Name: "Andrew Carolan", Position: "CB", Goals: 0, Assists: 0, Notes: "Stub" },
-  ];
+  myTeamRowData: any[] = [];
+  opponentTeamRowData: any[] = [];
+
+  
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
@@ -166,14 +164,32 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         this.opponentTeamPlayersOnField = gameDetail.opponentTeam.playersGameData.filter(player => player.isOnField);
         this.opponentTeamPlayersOnBench = gameDetail.opponentTeam.playersGameData.filter(player => player.isOnField === false)
 
-        // Now that the gameDetail data is available, populate the circles array
-        for (const player of this.gameDetail.myTeam.playersGameData) {
-          if (player.isOnField == true) {
-            const playerCircle: Circle = { x: player.circleXCoord, y: player.circleYCoord, radius: 20, isDragging: false, 
-              primaryColor: this.myTeamColor, secondaryColor: gameDetail.myTeam.secondaryColor, numberDisplayed: player.jerseyNum, playerLastName: player.lastName };
-            this.circles.push(playerCircle);
-          }
-        }
+        
+        // Populate rowData dynamically
+        this.myTeamRowData = [
+          ...this.myTeamPlayersOnField.map(player => this.mapPlayerToRow(player)),
+          ...this.myTeamPlayersOnBench.map(player => this.mapPlayerToRow(player)),
+        ];
+
+        this.opponentTeamRowData = [
+          ...this.opponentTeamPlayersOnField.map(player => this.mapPlayerToRow(player)),
+          ...this.opponentTeamPlayersOnBench.map(player => this.mapPlayerToRow(player)),
+        ]
+
+        // Log the new rowData
+        this.logger.info('Row data populated:', this.myTeamRowData);
+
+        // Initialize circles for players on the field
+        this.circles = this.myTeamPlayersOnField.map(player => ({
+          x: player.circleXCoord,
+          y: player.circleYCoord,
+          radius: 20,
+          isDragging: false,
+          primaryColor: this.myTeamColor,
+          secondaryColor: gameDetail.myTeam.secondaryColor,
+          numberDisplayed: player.jerseyNum,
+          playerLastName: player.lastName,
+        }));
 
         // Draw circles after they've been initialized
         this.drawCircles();
@@ -181,6 +197,16 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         // Log the number of circles
         this.logger.info(`The circles list now contains ${this.circles.length} circles after gameDetail is loaded`);
       });
+  }
+
+  mapPlayerToRow(player: InGamePlayerData): any {
+    return {
+      Name: `${player.firstName} ${player.lastName}`,
+      Position: player.position,
+      Goals: player.goals,
+      Assists: player.assists,
+      Notes: '',
+    };
   }
 
   onGridReady(params: any): void {
