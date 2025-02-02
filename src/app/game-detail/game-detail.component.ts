@@ -8,8 +8,9 @@ import { Circle } from '../Circle';
 import { FIELD_PIXEL_HEIGHT, FIELD_PIXEL_WIDTH } from '../constants';
 import { InGamePlayerData } from '../inGamePlayerData';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { CustomPlayerLabelComponent } from './custom-player-label.component';
 import { AgGridAngular } from '@ag-grid-community/angular'; // Angular Data Grid Component
-import type { ColDef } from '@ag-grid-community/core'; // Column Definition Type Interface
+import type { ColDef, ITextFilterParams, INumberFilterParams,} from '@ag-grid-community/core'; // Column Definition Type Interface
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
 import {
@@ -45,13 +46,23 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
   myTeamRowData: any[] = [];
   opponentTeamRowData: any[] = [];
+  toggleOpponentTeamView: Boolean = false;
 
-  
+  // Define a reusable comparator function
+  numberComparator = (filterValue: number, cellValue: number | null) => {
+    if (cellValue == null) return -1; // Treat nulls as smallest value
+    return cellValue - filterValue; // Standard numerical comparison
+  };
+
+  numberFilterParams: INumberFilterParams = {
+    filterOptions: ["equals", "notEqual", "greaterThan", "lessThan"],
+    defaultOption: "equals"
+  };
+
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
-    { field: "Name", headerName: "Player", editable: false, width: 200 }, // Not editable
-    { field: "Position", headerName: "Position", editable: false, width: 125 }, // Not editable
+    { field: "Name", headerName: "Player", editable: false, width: 300, cellRenderer: CustomPlayerLabelComponent }, // Not editable
     {
       field: "Goals",
       headerName: "Goals",
@@ -63,7 +74,15 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         showStepperButtons: true
       },
       valueParser: (params) => parseInt(params.newValue, 10) || 0, // Ensure valid integer,
-      width: 100
+      width: 100,
+      filterParams: {
+        filterOptions: ["equals", "notEqual", "greaterThan", "lessThan"],
+        defaultOption: "equals",
+        comparator: (filterValue: number, cellValue: number) => {
+          if (cellValue == null) return -1;
+          return cellValue - filterValue;
+        }
+      } as INumberFilterParams,
     },
     {
       field: "Assists",
@@ -76,7 +95,8 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         showStepperButtons: true
       },
       valueParser: (params) => parseInt(params.newValue, 10) || 0,
-      width: 100
+      width: 100,
+      filterParams: this.numberFilterParams,
     },
     {
       field: "Notes", headerName: "Notes", editable: false, width: 100
@@ -112,7 +132,6 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     this.getGameDetailData();
     this.logger.info(`GameDetail fetched with gameId: ${this.gameDetail?.id}`);
     this.logger.info('GameDetail data: {}', this.gameDetail);
-    this.logger.info('The data const is {}', data)
   }
 
   ngAfterViewInit(): void {
@@ -201,8 +220,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
   mapPlayerToRow(player: InGamePlayerData): any {
     return {
-      Name: `${player.firstName} ${player.lastName}`,
-      Position: player.position,
+      Name: player,
       Goals: player.goals,
       Assists: player.assists,
       Notes: '',
@@ -260,9 +278,11 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     }
     return null;
   }
+
+  toggleOpponentView(){
+    this.toggleOpponentTeamView = !this.toggleOpponentTeamView;
+    this.logger.info(`Switched to OpponentTeamView to ${this.toggleOpponentTeamView}`)
+  }
+
+
 }
-
-
-const data = Array.from(Array(20).keys()).map((val: any, index: number) => ({
-  number: index,
-}));

@@ -4,9 +4,26 @@
     /* align-items: flex-start; Aligns both sections to the top */
     position: relative;
     padding: 20px; /* Add some padding for breathing space */
-    background-color: #f8f8f8; /* Ensure background contrast */
+    background-color: #f8f8f8; /* Remove this for production. Only so I can see the area when modifying */
     flex-direction: row;
   }
+
+  .button-panel {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    z-index: 10;
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Ensures vertical alignment */
+    gap: 30px; /* Adds space between toggle switch and buttons */
+  }
+  
+
+  .header {
+    position: relative;
+    z-index: 5;
+  }
+  
   
   .my-players-stats-container {
     flex: 1; /* This allows all sections to take equal space */
@@ -34,15 +51,6 @@
     height: 800px; /* Must be the same value as FIELD_PIXEL_HEIGHT */
     max-width: 800px; /* Must be the same value as FIELD_PIXEL_WIDTH */
     margin-right: 20px;
-  }
-
-  .temporary-stats-container {
-    flex: 4; /* This allows all sections to take equal space */
-    margin-right: 20px; /* Adjust space between the two sections */
-    align-self: flex-start; /* Aligns the upcoming games to the top of the container */
-    list-style-type: none;
-    flex-grow: 1;
-    border: 5px solid pink; /* Border around the wrapper */
   }
   
   label {
@@ -273,3 +281,66 @@ button.decrement:hover {
     /* Add specific styles here if needed in the future */
   }
   
+
+/* Container to align text above the slider */
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers text and slider */
+}
+
+/* Style for the text label */
+.toggle-label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px; /* Adds space between text and slider */
+  text-align: center;
+}
+
+  /* Container for the toggle */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The track */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s;
+}
+
+/* The circular slider */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* Toggled state */
+.toggle-switch input:checked+.slider {
+  background-color: #4caf50;
+}
+
+.toggle-switch input:checked+.slider::before {
+  transform: translateX(26px);
+}
