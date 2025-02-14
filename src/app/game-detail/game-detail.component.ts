@@ -48,12 +48,6 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
   opponentTeamRowData: any[] = [];
   toggleOpponentTeamView: Boolean = false;
 
-  // Define a reusable comparator function
-  numberComparator = (filterValue: number, cellValue: number | null) => {
-    if (cellValue == null) return -1; // Treat nulls as smallest value
-    return cellValue - filterValue; // Standard numerical comparison
-  };
-
   numberFilterParams: INumberFilterParams = {
     filterOptions: ["equals", "notEqual", "greaterThan", "lessThan"],
     defaultOption: "equals"
@@ -62,7 +56,20 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
   // Column Definitions: Defines the columns to be displayed.
   colDefs: ColDef[] = [
-    { field: "Name", headerName: "Player", editable: false, width: 300, cellRenderer: CustomPlayerLabelComponent }, // Not editable
+    { field: "Name", 
+      headerName: "Player", 
+      editable: false, 
+      width: 300, 
+      cellRenderer: CustomPlayerLabelComponent,
+      filterValueGetter: (params: any) => {
+        const cellAsGameDetailObject: InGamePlayerData = params.data.Name as InGamePlayerData;
+        return `${cellAsGameDetailObject.firstName} ${cellAsGameDetailObject.lastName}`;
+      },
+      filterParams: {
+        filterOptions: ["contains", "notContains", "equals", "notEqual", "startsWith", "endsWith"],
+        defaultOption: "contains"
+      }
+    }, // Not editable
     {
       field: "Goals",
       headerName: "Goals",
@@ -73,16 +80,8 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         step: 1,                   // Increment step when using arrows
         showStepperButtons: true
       },
-      valueParser: (params) => parseInt(params.newValue, 10) || 0, // Ensure valid integer,
       width: 100,
-      filterParams: {
-        filterOptions: ["equals", "notEqual", "greaterThan", "lessThan"],
-        defaultOption: "equals",
-        comparator: (filterValue: number, cellValue: number) => {
-          if (cellValue == null) return -1;
-          return cellValue - filterValue;
-        }
-      } as INumberFilterParams,
+      filterParams: this.numberFilterParams
     },
     {
       field: "Assists",
@@ -94,7 +93,6 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         increment: 1,
         showStepperButtons: true
       },
-      valueParser: (params) => parseInt(params.newValue, 10) || 0,
       width: 100,
       filterParams: this.numberFilterParams,
     },
@@ -110,7 +108,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
     filter: true,
   };
 
-  gameDetail: GameDetail | undefined;
+  gameDetail?: GameDetail;
   myTeamPlayersOnField: InGamePlayerData[] = [];
   myTeamPlayersOnBench: InGamePlayerData[] = [];
   opponentTeamPlayersOnField: InGamePlayerData[] = [];
@@ -184,7 +182,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
         this.opponentTeamPlayersOnBench = gameDetail.opponentTeam.playersGameData.filter(player => player.isOnField === false)
 
         
-        // Populate rowData dynamically
+        // Populate rowData dynamically - maybe don't use a spread for this
         this.myTeamRowData = [
           ...this.myTeamPlayersOnField.map(player => this.mapPlayerToRow(player)),
           ...this.myTeamPlayersOnBench.map(player => this.mapPlayerToRow(player)),
@@ -197,6 +195,8 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
         // Log the new rowData
         this.logger.info('Row data populated:', this.myTeamRowData);
+        this.logger.info('The data type of the row field for Name is:', typeof this.myTeamRowData[0].Name);
+        this.logger.info('The data type of the row field for Goals is:', typeof this.myTeamRowData[0].Goals);
 
         // Initialize circles for players on the field
         this.circles = this.myTeamPlayersOnField.map(player => ({

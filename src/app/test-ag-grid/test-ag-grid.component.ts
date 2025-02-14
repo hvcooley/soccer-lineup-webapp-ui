@@ -3,6 +3,7 @@ import { AgGridAngular } from '@ag-grid-community/angular'; // Angular Data Grid
 import type { ColDef } from '@ag-grid-community/core'; // Column Definition Type Interface
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
+import { InGamePlayerData } from '../inGamePlayerData';
 
 @Component({
   selector: 'app-test-ag-grid',
@@ -54,4 +55,15 @@ export class TestAgGridComponent {
     sortable: true,
     filter: true,
   };
+
+
+  testNameComparisonFunction(filterValue: string, cellValue: object): boolean {
+    const cellAsGameDetailObject: InGamePlayerData = cellValue as InGamePlayerData;
+    const playerFullName: string = `${cellAsGameDetailObject.firstName} ${cellAsGameDetailObject.lastName}`.toLowerCase();
+    const filterValueLower: string = filterValue.toLowerCase();
+    //this.logger.info(`Comparing ${playerFullName} to ${filterValueLower}`);
+    return playerFullName.includes(filterValueLower);
+
+  }
+
 }

@@ -1,10 +1,12 @@
+import { InGamePlayerData } from "../inGamePlayerData";
+
 export class CustomPlayerLabelComponent {
     private eGui!: HTMLDivElement;
     private params: any;
 
     init(params: any) {
         this.params = params;
-        const player = params.value; // Extract player object
+        const player: InGamePlayerData = params.value; // Extract player object
 
         if (!player) {
             this.eGui = document.createElement('div');
