@@ -23,6 +23,7 @@ import {
   ModuleRegistry,
   createGrid,
 } from "@ag-grid-community/core";
+import { CustomNotesButtonComponent } from './custom-notes-button.component';
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 
@@ -97,7 +98,11 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
       filterParams: this.numberFilterParams,
     },
     {
-      field: "Notes", headerName: "Notes", editable: false, width: 100
+      field: "Notes", 
+      headerName: "Notes", 
+      editable: false, 
+      width: 300,
+      cellRenderer: CustomNotesButtonComponent,
     }
   ];
 
@@ -223,7 +228,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
       Name: player,
       Goals: player.goals,
       Assists: player.assists,
-      Notes: '',
+      Notes: player.notes,
     };
   }
 

@@ -12,4 +12,5 @@ export interface InGamePlayerData {
     circleId: number;
     circleXCoord: number;
     circleYCoord: number;
+    notes: string[];
   }
