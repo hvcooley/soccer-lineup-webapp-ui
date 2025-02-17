@@ -20,7 +20,7 @@ export class CustomNotesButtonComponent {
 
         // Create view button
         const viewButton = document.createElement('span');
-        viewButton.textContent = `View Notes`;
+        viewButton.textContent = `View`;
 
         viewButton.addEventListener('click', () => {
             // Handle button click event
@@ -28,21 +28,37 @@ export class CustomNotesButtonComponent {
         });
 
         Object.assign(viewButton.style, {
+            backgroundColor: '#c2fbd7',
+            borderRadius: '100px',
+            boxShadow: 'rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px',
+            color: 'green',
+            cursor: 'pointer',
             display: 'inline-block',
-            fontSize: 'small',
-            color: 'white',
-            padding: '0.8em 0.7em 0 0.7em',
-            backgroundColor: '#405061',
-            lineHeight: '1em',
-            position: 'relative',
-            left: '-1px',
-            top: '-4px',
-            height: '1.8em',
-            minWidth: '8px',
-            width: '2.5em',
+            fontFamily: 'CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif',
+            padding: '0px 20px',
             textAlign: 'center',
-            marginRight: '.8em',
-            borderRadius: '4px 0 0 4px',
+            textDecoration: 'none',
+            transition: 'all 250ms',
+            border: '0',
+            fontSize: '15px',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            touchAction: 'manipulation',
+            marginRight: params.viewButtonMargin || '10px' // Set margin dynamically
+        });
+
+        viewButton.addEventListener('mouseover', () => {
+            Object.assign(viewButton.style, {
+                boxShadow: 'rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px',
+                transform: 'scale(1.05) rotate(-1deg)',
+            });
+        });
+
+        viewButton.addEventListener('mouseout', () => {
+            Object.assign(viewButton.style, {
+                boxShadow: 'rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px',
+                transform: 'none',
+            });
         });
 
         // Create the add button
@@ -53,24 +69,38 @@ export class CustomNotesButtonComponent {
             // Handle button click event
             console.log('Add Button clicked!');
         });
-        
-        // Apply styles inline (since global styles won't apply)
+
         Object.assign(addButton.style, {
+            backgroundColor: '#c2fbd7',
+            borderRadius: '100px',
+            boxShadow: 'rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px',
+            color: 'green',
+            cursor: 'pointer',
             display: 'inline-block',
-            fontSize: 'small',
-            color: 'white',
-            padding: '0.8em 0.7em 0 0.7em',
-            backgroundColor: '#405061',
-            lineHeight: '1em',
-            position: 'relative',
-            left: '-1px',
-            top: '-4px',
-            height: '1.8em',
-            minWidth: '8px',
-            width: '2.5em',
+            fontFamily: 'CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif',
+            padding: '0px 20px',
             textAlign: 'center',
-            marginRight: '.8em',
-            borderRadius: '4px 0 0 4px',
+            textDecoration: 'none',
+            transition: 'all 250ms',
+            border: '0',
+            fontSize: 'px',
+            userSelect: 'none',
+            WebkitUserSelect: 'none',
+            touchAction: 'manipulation',
+        });
+
+        addButton.addEventListener('mouseover', () => {
+            Object.assign(addButton.style, {
+                boxShadow: 'rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px',
+                transform: 'scale(1.05) rotate(-1deg)',
+            });
+        });
+
+        addButton.addEventListener('mouseout', () => {
+            Object.assign(addButton.style, {
+                boxShadow: 'rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px',
+                transform: 'none',
+            });
         });
 
         // Append elements

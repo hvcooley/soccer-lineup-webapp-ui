@@ -101,7 +101,7 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
       field: "Notes", 
       headerName: "Notes", 
       editable: false, 
-      width: 300,
+      width: 170,
       cellRenderer: CustomNotesButtonComponent,
     }
   ];
@@ -265,14 +265,21 @@ export class GameDetailComponent implements OnInit, AfterViewInit {
 
     // Draw the player's name below the circle
     const textYPosition = circle.y + circle.radius + 10; // Position below the circle
-    this.ctx.font = `${circle.radius * 0.5}px Arial`; // Smaller font for the name
+    this.ctx.font = `${circle.radius * 0.7}px Arial`; // Smaller font for the name
     this.ctx.fillStyle = circle.secondaryColor; // Set the text color for the name
     this.ctx.fillText(circle.playerLastName, circle.x, textYPosition);
 }
 
   drawCircles() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.circles.forEach(circle => this.drawCircle(circle)); // Use arrow function to maintain 'this' context
+    
+    var img = new Image();
+    img.src = "/assets/images/pitch-2d-stock-photo-horizontal-stripes.jpg";
+    img.onload = () => {
+      this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
+      this.circles.forEach(circle => this.drawCircle(circle)); // Use arrow function to maintain 'this' context
+    };
+
   }
 
   getCircleAt(x: number, y: number): Circle | null {
